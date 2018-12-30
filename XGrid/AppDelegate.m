@@ -9,6 +9,9 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+    [self setupMenu];
+    
     _rWindow = [[NSWindow alloc] initWithContentRect:NSScreen.mainScreen.frame
                                            styleMask:NSWindowStyleMaskClosable | NSWindowStyleMaskTitled | NSWindowStyleMaskFullSizeContentView
                                              backing:NSBackingStoreBuffered
@@ -25,13 +28,23 @@
     _windowController = [[NSWindowController alloc] init];
     [_windowController setWindow:_rWindow];
     [_windowController showWindow:self];
+    
+    [NSApp activateIgnoringOtherApps:true];
     [NSApp run];
 }
 
-
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
+-(void)setupMenu {
+    NSMenu *menu = [[NSMenu alloc] init];
+    NSMenuItem *appItem = [[NSMenuItem alloc] init];
+    [menu addItem:appItem];
     
+    NSMenu *subMenu = [[NSMenu alloc] init];
+    NSMenuItem *quitItem = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(terminate:) keyEquivalent:@"q"];
+    quitItem.enabled = true;
+    [subMenu addItem:quitItem];
+    
+    [appItem setSubmenu:subMenu];
+    [NSApp setMainMenu:menu];
 }
-
 
 @end

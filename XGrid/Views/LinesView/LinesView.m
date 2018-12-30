@@ -28,6 +28,14 @@
     [super drawRect:dirtyRect];
 }
 
+-(void)mouseEntered:(NSEvent *)event {
+    NSLog(@"entered");
+}
+
+-(void)mouseExited:(NSEvent *)event {
+    NSLog(@"exited");
+}
+
 #pragma mark Collection view funcs
 - (void)setupCollectionView {
     scrollView = [[NSScrollView alloc] init];
@@ -94,4 +102,5 @@
 -(NSCollectionViewItem*)collectionView:(NSCollectionView *)collectionView itemForRepresentedObjectAtIndexPath:(NSIndexPath *)indexPath {
     return [[LinesItem alloc] init];
 }
+
 @end
