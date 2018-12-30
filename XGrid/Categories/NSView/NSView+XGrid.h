@@ -1,6 +1,6 @@
 #import <Cocoa/Cocoa.h>
 
-@interface NSView (Ruler)
+@interface NSView (XGrid)
 
 -(void)setBackGroundColor:(NSColor*)color;
 

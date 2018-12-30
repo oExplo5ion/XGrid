@@ -1,6 +1,6 @@
 #import "GridToolbar.h"
-#import "NSView+Ruler.h"
-#import "NSColor+Ruler.h"
+#import "NSView+XGrid.h"
+#import "NSColor+XGrid.h"
 
 @implementation GridToolbar
 

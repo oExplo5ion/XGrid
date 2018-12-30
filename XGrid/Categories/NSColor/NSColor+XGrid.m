@@ -1,6 +1,6 @@
-#import "NSColor+Ruler.h"
+#import "NSColor+XGrid.h"
 
-@implementation NSColor (Ruler)
+@implementation NSColor (XGrid)
 
 + (NSColor *)midNightBlue {
     return [NSColor colorWithRed:44/255 green:62/255 blue:80/255 alpha:1.0f];

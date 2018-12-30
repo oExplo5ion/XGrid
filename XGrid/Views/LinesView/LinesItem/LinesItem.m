@@ -1,5 +1,5 @@
 #import "LinesItem.h"
-#import "NSView+Ruler.h"
+#import "NSView+XGrid.h"
 #import "LinesItemView.h"
 
 @interface LinesItem ()

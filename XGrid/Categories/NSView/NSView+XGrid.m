@@ -1,6 +1,6 @@
-#import "NSView+Ruler.h"
+#import "NSView+XGrid.h"
 
-@implementation NSView (Ruler)
+@implementation NSView (XGrid)
 
 -(void)setBackGroundColor:(NSColor*)color {
     [self setWantsLayer:TRUE];

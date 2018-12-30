@@ -1,6 +1,6 @@
 #import "LinesItemView.h"
-#import "NSView+Ruler.h"
-#import "NSColor+Ruler.h"
+#import "NSView+XGrid.h"
+#import "NSColor+XGrid.h"
 
 @implementation LinesItemView
 

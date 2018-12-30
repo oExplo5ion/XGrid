@@ -1,7 +1,7 @@
 #import "LinesView.h"
-#import "NSView+Ruler.h"
+#import "NSView+XGrid.h"
 #import "LinesItem.h"
-#import "NSColor+Ruler.h"
+#import "NSColor+XGrid.h"
 
 @interface LinesView () <NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout> {
     NSScrollView *scrollView;
