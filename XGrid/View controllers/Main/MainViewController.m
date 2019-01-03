@@ -60,6 +60,9 @@
     _topLinesView.mouseMoved = ^(NSPoint point) {
         [this drawTemplateView:point direction:1];
     };
+    _topLinesView.mouseExited = ^ {
+        [this removeTemplate];
+    };
     
     _leftLinesView = [[LinesView alloc] init];
     [self.view addSubview:_leftLinesView];
@@ -71,6 +74,9 @@
     _leftLinesView.mouseMoved = ^(NSPoint point) {
         [this drawTemplateView:point direction:0];
     };
+    _leftLinesView.mouseExited = ^ {
+        [this removeTemplate];
+    };
 }
 
 #pragma mark Template view
@@ -79,15 +85,16 @@
     [self removeTemplate];
     
     CGRect rect;
+    uint8 width = 1;
     if (direction == 0) {
         rect = CGRectMake(20,
                           point.y,
                           NSScreen.mainScreen.frame.size.width,
-                          5);
+                          width);
     } else {
         rect = CGRectMake(point.x,
                           -40,
-                          5,
+                          width,
                           NSScreen.mainScreen.frame.size.height);
     }
     
@@ -98,7 +105,7 @@
 
 -(void)removeTemplate{
     if (templateView == nil) { return; }
-    [templateView removeFromSuperview ];
+    [templateView removeFromSuperview];
 }
 
 @end
