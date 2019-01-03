@@ -16,7 +16,6 @@
     self = [super init];
     if (self) {
         [self drawLineMenus];
-        [self setMenu:[[NSMenu alloc] initWithTitle:@"Ez"]];
     }
     return self;
 }
@@ -26,18 +25,6 @@
     [self drawLineMenus];
 }
 
--(void)setMenu:(NSMenu *)menu {
-    NSMenuItem *xGridItem = [[NSMenuItem alloc] initWithTitle:@"XGrid3"
-                                                       action:@selector(exit)
-                                                keyEquivalent:@""];
-    xGridItem.enabled = true;
-    [menu addItem:xGridItem];
-}
-
--(void)exit {
-    
-}
-    
 - (void)drawLineMenus {
     [self setView:[[NSView alloc]initWithFrame:NSScreen.mainScreen.frame]];
     

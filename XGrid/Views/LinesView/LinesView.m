@@ -14,12 +14,18 @@
 @implementation LinesView
 
 #pragma mark Ovverides
+-(BOOL)wantsDefaultClipping {
+    return false;
+}
+
 - (instancetype)init
 {
     self = [super init];
     if (self) {
         reuseLinesItem = @"reuseLinesItem";
         [self setupCollectionView];
+//        [self addTrackingArea];
+        
     }
     return self;
 }
@@ -28,8 +34,18 @@
     [super drawRect:dirtyRect];
 }
 
--(void)mouseEntered:(NSEvent *)event {
-    NSLog(@"entered");
+-(void)layout {
+    [super layout];
+    NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:self.bounds
+                                                                   options:(NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveAlways)
+                                                                     owner:self
+                                                                  userInfo:nil];
+    [self addTrackingArea:trackingArea];
+}
+
+#pragma mark Mouse events
+-(void)mouseMoved:(NSEvent *)event {
+    NSLog(@"moved");
 }
 
 -(void)mouseExited:(NSEvent *)event {
