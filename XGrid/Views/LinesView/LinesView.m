@@ -45,11 +45,11 @@
 
 #pragma mark Mouse events
 -(void)mouseMoved:(NSEvent *)event {
-    NSLog(@"moved");
+    self.mouseMoved(NSEvent.mouseLocation);
 }
 
 -(void)mouseExited:(NSEvent *)event {
-    NSLog(@"exited");
+//    self.mouseExited();
 }
 
 #pragma mark Collection view funcs

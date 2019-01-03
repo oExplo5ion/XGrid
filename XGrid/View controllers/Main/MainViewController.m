@@ -4,7 +4,9 @@
 #import "LinesView.h"
 #import "GridToolbar.h"
 
-@interface MainViewController ()
+@interface MainViewController () {
+    NSView *templateView;
+}
 @property GridToolbar *gridToolBar;
 @property LinesView *topLinesView;
 @property LinesView *leftLinesView;
@@ -45,6 +47,8 @@
     [[voidView.widthAnchor constraintEqualToConstant:20] setActive:true];
     [voidView setBackGroundColor:NSColor.midNightBlue];
     
+    __block MainViewController* this = self;
+    
     _topLinesView = [[LinesView alloc] init];
     [self.view addSubview:_topLinesView];
     _topLinesView.translatesAutoresizingMaskIntoConstraints = false;
@@ -53,6 +57,9 @@
     [[_topLinesView.leftAnchor constraintEqualToAnchor:voidView.rightAnchor constant:0] setActive:true];
     [[_topLinesView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:0] setActive:true];
     [_topLinesView setDirection:1];
+    _topLinesView.mouseMoved = ^(NSPoint point) {
+        [this drawTemplateView:point direction:1];
+    };
     
     _leftLinesView = [[LinesView alloc] init];
     [self.view addSubview:_leftLinesView];
@@ -61,6 +68,37 @@
     [[_leftLinesView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:0] setActive:true];
     [[_leftLinesView.leftAnchor constraintEqualToAnchor:voidView.leftAnchor constant:0] setActive:true];
     [[_leftLinesView.rightAnchor constraintEqualToAnchor:voidView.rightAnchor constant:0] setActive:true];
+    _leftLinesView.mouseMoved = ^(NSPoint point) {
+        [this drawTemplateView:point direction:0];
+    };
+}
+
+#pragma mark Template view
+
+-(void)drawTemplateView:(NSPoint)point direction:(LinesViewDirection)direction {
+    [self removeTemplate];
+    
+    CGRect rect;
+    if (direction == 0) {
+        rect = CGRectMake(20,
+                          point.y,
+                          NSScreen.mainScreen.frame.size.width,
+                          5);
+    } else {
+        rect = CGRectMake(point.x,
+                          -40,
+                          5,
+                          NSScreen.mainScreen.frame.size.height);
+    }
+    
+    templateView = [[NSView alloc] initWithFrame:rect];
+    [templateView setBackGroundColor:NSColor.redColor];
+    [self.view addSubview:templateView];
+}
+
+-(void)removeTemplate{
+    if (templateView == nil) { return; }
+    [templateView removeFromSuperview ];
 }
 
 @end
