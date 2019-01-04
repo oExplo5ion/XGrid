@@ -49,7 +49,7 @@
 }
 
 -(void)mouseExited:(NSEvent *)event {
-    [self mouseExited];
+    self.mouseExited();
 }
 
 #pragma mark Collection view funcs
