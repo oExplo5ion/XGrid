@@ -6,6 +6,7 @@
 
 @interface MainViewController () {
     NSView *templateView;
+    CGSize voidSize;
 }
 @property GridToolbar *gridToolBar;
 @property LinesView *topLinesView;
@@ -29,6 +30,7 @@
 
 - (void)drawLineMenus {
     [self setView:[[NSView alloc]initWithFrame:NSScreen.mainScreen.frame]];
+    voidSize = CGSizeMake(20, 20);
     
     _gridToolBar = [[GridToolbar alloc] init];
     [self.view addSubview:_gridToolBar];
@@ -43,8 +45,8 @@
     voidView.translatesAutoresizingMaskIntoConstraints = false;
     [[voidView.topAnchor constraintEqualToAnchor:_gridToolBar.bottomAnchor constant:0] setActive:true];
     [[voidView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:0] setActive:true];
-    [[voidView.heightAnchor constraintEqualToConstant:20] setActive:true];
-    [[voidView.widthAnchor constraintEqualToConstant:20] setActive:true];
+    [[voidView.heightAnchor constraintEqualToConstant:voidSize.height] setActive:true];
+    [[voidView.widthAnchor constraintEqualToConstant:voidSize.width] setActive:true];
     [voidView setBackGroundColor:NSColor.midNightBlue];
     
     __block MainViewController* this = self;
@@ -80,20 +82,19 @@
 }
 
 #pragma mark Template view
-
 -(void)drawTemplateView:(NSPoint)point direction:(LinesViewDirection)direction {
     [self removeTemplate];
     
     CGRect rect;
     uint8 width = 1;
     if (direction == 0) {
-        rect = CGRectMake(20,
+        rect = CGRectMake(voidSize.width,
                           point.y,
                           NSScreen.mainScreen.frame.size.width,
                           width);
     } else {
         rect = CGRectMake(point.x,
-                          -40,
+                          -voidSize.height - 20,
                           width,
                           NSScreen.mainScreen.frame.size.height);
     }
