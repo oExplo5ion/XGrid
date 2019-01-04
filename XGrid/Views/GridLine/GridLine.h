@@ -2,4 +2,6 @@
 
 @interface GridLine : NSView
 
+@property (atomic, copy, nullable) void (^onMenuRemove)(void);
+
 @end

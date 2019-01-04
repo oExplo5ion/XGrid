@@ -157,6 +157,13 @@
     }
     
     GridLine *gridLine = [[GridLine alloc] initWithFrame:rect];
+    
+    __block GridLine *block_gridLine = gridLine;
+    __block NSMutableSet *block_gridLines = gridLines;
+    gridLine.onMenuRemove = ^{
+        [block_gridLine removeFromSuperview];
+        [block_gridLines removeObject:block_gridLine];
+    };
     [self.view addSubview:gridLine];
     [gridLines addObject:gridLine];
 }
