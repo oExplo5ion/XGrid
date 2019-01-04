@@ -32,10 +32,12 @@
     rWindow.hasShadow                  = false;
     rWindow.movable                    = false;
     rWindow.titlebarAppearsTransparent = true;
-    rWindow.titleVisibility            = NSWindowTitleHidden;
+    rWindow.titleVisibility            = NSWindowTitleVisible;
+    rWindow.title                      = @"Grid preferences";
     rWindow.contentViewController      = [[GridLinesPreferencesViewController alloc] init];
     
     [self setWindow:rWindow];
+    [rWindow center];
 }
 
 @end
