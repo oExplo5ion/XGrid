@@ -22,6 +22,7 @@
     if (self) {
         gridLines = [[NSMutableSet alloc] init];
         [self drawLineMenus];
+        [self setupMenu];
     }
     return self;
 }
@@ -90,6 +91,27 @@
     };
 }
 
+#pragma mark menu
+-(void)setupMenu {
+    NSMenu *menu = NSApp.mainMenu;
+    NSMenuItem *gridItem = [[NSMenuItem alloc] init];
+    [menu addItem:gridItem];
+    
+    NSMenu *gridMenu = [[NSMenu alloc] initWithTitle:@"Grid"];
+    
+    NSMenuItem *removeAllItem = [[NSMenuItem alloc] initWithTitle:@"Remove all" action:@selector(removeGridLines) keyEquivalent:@"r"];
+    removeAllItem.enabled = false;
+    [gridMenu addItem:removeAllItem];
+    
+    NSMenuItem *gridPreferencesItem = [[NSMenuItem alloc] initWithTitle:@"Preferences"
+                                                                 action:@selector(showGridLinesPreferences)
+                                                          keyEquivalent:@"p"];
+    gridPreferencesItem.enabled = false;
+    [gridMenu addItem:gridPreferencesItem];
+    
+    [gridItem setSubmenu:gridMenu];
+}
+
 #pragma mark Template view
 -(void)drawTemplateView:(NSPoint)point direction:(LinesViewDirection)direction {
     [self removeTemplate];
@@ -143,6 +165,10 @@
     for (GridLine *line in gridLines) {
         [line removeFromSuperview];
     }
+}
+
+-(void)showGridLinesPreferences {
+    
 }
 
 @end
