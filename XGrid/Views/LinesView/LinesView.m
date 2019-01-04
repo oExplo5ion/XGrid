@@ -24,8 +24,6 @@
     if (self) {
         reuseLinesItem = @"reuseLinesItem";
         [self setupCollectionView];
-//        [self addTrackingArea];
-        
     }
     return self;
 }
@@ -44,12 +42,19 @@
 }
 
 #pragma mark Mouse events
+-(void)mouseDown:(NSEvent *)event {
+    if (self.onMouseLeftClick == nil) { return; }
+    self.onMouseLeftClick(NSEvent.mouseLocation);
+}
+
 -(void)mouseMoved:(NSEvent *)event {
-    self.mouseMoved(NSEvent.mouseLocation);
+    if (self.onMouseMoved == nil) { return; }
+    self.onMouseMoved(NSEvent.mouseLocation);
 }
 
 -(void)mouseExited:(NSEvent *)event {
-    self.mouseExited();
+    if (self.onMouseExited == nil) { return; }
+    self.onMouseExited();
 }
 
 #pragma mark Collection view funcs

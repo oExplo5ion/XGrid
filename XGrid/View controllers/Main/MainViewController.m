@@ -3,10 +3,12 @@
 #import "NSColor+XGrid.h"
 #import "LinesView.h"
 #import "GridToolbar.h"
+#import "GridLine.h"
 
 @interface MainViewController () {
     NSView *templateView;
     CGSize voidSize;
+    NSMutableSet *gridLines;
 }
 @property GridToolbar *gridToolBar;
 @property LinesView *topLinesView;
@@ -18,6 +20,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        gridLines = [[NSMutableSet alloc] init];
         [self drawLineMenus];
     }
     return self;
@@ -59,11 +62,14 @@
     [[_topLinesView.leftAnchor constraintEqualToAnchor:voidView.rightAnchor constant:0] setActive:true];
     [[_topLinesView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:0] setActive:true];
     [_topLinesView setDirection:1];
-    _topLinesView.mouseMoved = ^(NSPoint point) {
+    _topLinesView.onMouseMoved = ^(NSPoint point) {
         [this drawTemplateView:point direction:1];
     };
-    _topLinesView.mouseExited = ^ {
+    _topLinesView.onMouseExited = ^ {
         [this removeTemplate];
+    };
+    _topLinesView.onMouseLeftClick = ^(NSPoint point) {
+        [this addGridLine:point direction:1];
     };
     
     _leftLinesView = [[LinesView alloc] init];
@@ -73,11 +79,14 @@
     [[_leftLinesView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:0] setActive:true];
     [[_leftLinesView.leftAnchor constraintEqualToAnchor:voidView.leftAnchor constant:0] setActive:true];
     [[_leftLinesView.rightAnchor constraintEqualToAnchor:voidView.rightAnchor constant:0] setActive:true];
-    _leftLinesView.mouseMoved = ^(NSPoint point) {
+    _leftLinesView.onMouseMoved = ^(NSPoint point) {
         [this drawTemplateView:point direction:0];
     };
-    _leftLinesView.mouseExited = ^ {
+    _leftLinesView.onMouseExited = ^ {
         [this removeTemplate];
+    };
+    _leftLinesView.onMouseLeftClick = ^(NSPoint point) {
+        [this addGridLine:point direction:0];
     };
 }
 
@@ -107,6 +116,33 @@
 -(void)removeTemplate{
     if (templateView == nil) { return; }
     [templateView removeFromSuperview];
+}
+
+#pragma mark Grid line
+-(void)addGridLine:(NSPoint)point direction:(LinesViewDirection)direction {
+    CGRect rect;
+    uint8 width = 1;
+    if (direction == 0) {
+        rect = CGRectMake(voidSize.width,
+                          point.y,
+                          NSScreen.mainScreen.frame.size.width,
+                          width);
+    } else {
+        rect = CGRectMake(point.x,
+                          -voidSize.height - 20,
+                          width,
+                          NSScreen.mainScreen.frame.size.height);
+    }
+    
+    GridLine *gridLine = [[GridLine alloc] initWithFrame:rect];
+    [self.view addSubview:gridLine];
+    [gridLines addObject:gridLine];
+}
+
+-(void)removeGridLines {
+    for (GridLine *line in gridLines) {
+        [line removeFromSuperview];
+    }
 }
 
 @end

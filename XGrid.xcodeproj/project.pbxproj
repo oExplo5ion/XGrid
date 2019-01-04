@@ -17,6 +17,7 @@
 		0467B06921D7BE35004BBBBB /* GridToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467B06821D7BE35004BBBBB /* GridToolbar.m */; };
 		0489BFA521D7E75F0046B993 /* LinesItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489BFA421D7E75F0046B993 /* LinesItemView.m */; };
 		0490E34221D64E7200254EC2 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0490E34121D64E7200254EC2 /* MainViewController.m */; };
+		04BB602721DF2C3400C667B3 /* GridLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB602621DF2C3400C667B3 /* GridLine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		0489BFA421D7E75F0046B993 /* LinesItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinesItemView.m; sourceTree = "<group>"; };
 		0490E34021D64E7200254EC2 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		0490E34121D64E7200254EC2 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		04BB602521DF2C3400C667B3 /* GridLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridLine.h; sourceTree = "<group>"; };
+		04BB602621DF2C3400C667B3 /* GridLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,7 @@
 			children = (
 				0467B06A21D7BE3A004BBBBB /* GridToolbar */,
 				0467B05D21D7B1B1004BBBBB /* LinesView */,
+				04BB602821DF2C3800C667B3 /* GridLine */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,6 +179,15 @@
 				0489BFA421D7E75F0046B993 /* LinesItemView.m */,
 			);
 			path = LinesItemView;
+			sourceTree = "<group>";
+		};
+		04BB602821DF2C3800C667B3 /* GridLine */ = {
+			isa = PBXGroup;
+			children = (
+				04BB602521DF2C3400C667B3 /* GridLine.h */,
+				04BB602621DF2C3400C667B3 /* GridLine.m */,
+			);
+			path = GridLine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +261,7 @@
 				0409223E21D2998600F97DC9 /* main.m in Sources */,
 				0467B06921D7BE35004BBBBB /* GridToolbar.m in Sources */,
 				0467B05821D69584004BBBBB /* NSColor+XGrid.m in Sources */,
+				04BB602721DF2C3400C667B3 /* GridLine.m in Sources */,
 				0467B05C21D6AC7A004BBBBB /* LinesView.m in Sources */,
 				0409223321D2998400F97DC9 /* AppDelegate.m in Sources */,
 				0489BFA521D7E75F0046B993 /* LinesItemView.m in Sources */,

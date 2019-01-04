@@ -13,13 +13,18 @@ typedef enum LinesViewDirection: UInt8 {
 -(void)setDirection:(LinesViewDirection)direction;
 
 /**
- * Returns mouse position when mouse has been moved
+ * Sends mouse position when mouse has been moved
  */
-@property (atomic, copy) void (^mouseMoved)(NSPoint);
+@property (atomic, copy, nullable) void (^onMouseMoved)(NSPoint);
 
 /**
  * Gets called when mouse exited the view
  */
-@property (atomic, copy) void (^mouseExited)(void);
+@property (atomic, copy, nullable) void (^onMouseExited)(void);
+
+/**
+ * Sends mouse position when left button has been clicked
+ */
+@property (atomic, copy, nullable) void (^onMouseLeftClick)(NSPoint);
 
 @end
