@@ -4,6 +4,7 @@
 #import "LinesView.h"
 #import "GridToolbar.h"
 #import "GridLine.h"
+#import "GridLinesPreferences.h"
 
 @interface MainViewController () {
     NSView *templateView;
@@ -176,7 +177,8 @@
 }
 
 -(void)showGridLinesPreferences {
-    
+    GridLinesPreferences *prefs = [[GridLinesPreferences alloc] init];
+    [prefs showWindow:self];
 }
 
 @end

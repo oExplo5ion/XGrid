@@ -18,6 +18,8 @@
 		0489BFA521D7E75F0046B993 /* LinesItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489BFA421D7E75F0046B993 /* LinesItemView.m */; };
 		0490E34221D64E7200254EC2 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0490E34121D64E7200254EC2 /* MainViewController.m */; };
 		04BB602721DF2C3400C667B3 /* GridLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB602621DF2C3400C667B3 /* GridLine.m */; };
+		04BB602C21DF3F5A00C667B3 /* GridLinesPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB602B21DF3F5A00C667B3 /* GridLinesPreferences.m */; };
+		04BB603121DF417C00C667B3 /* GridLinesPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB603021DF417C00C667B3 /* GridLinesPreferencesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,10 @@
 		0490E34121D64E7200254EC2 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		04BB602521DF2C3400C667B3 /* GridLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridLine.h; sourceTree = "<group>"; };
 		04BB602621DF2C3400C667B3 /* GridLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridLine.m; sourceTree = "<group>"; };
+		04BB602A21DF3F5A00C667B3 /* GridLinesPreferences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridLinesPreferences.h; sourceTree = "<group>"; };
+		04BB602B21DF3F5A00C667B3 /* GridLinesPreferences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridLinesPreferences.m; sourceTree = "<group>"; };
+		04BB602F21DF417C00C667B3 /* GridLinesPreferencesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridLinesPreferencesViewController.h; sourceTree = "<group>"; };
+		04BB603021DF417C00C667B3 /* GridLinesPreferencesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridLinesPreferencesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,7 @@
 			children = (
 				0409223121D2998400F97DC9 /* AppDelegate.h */,
 				0409223221D2998400F97DC9 /* AppDelegate.m */,
+				04BB602921DF3F0900C667B3 /* Window controllers */,
 				0409224921D2A19C00F97DC9 /* View controllers */,
 				0467B05921D6AC58004BBBBB /* Views */,
 				0409224521D29C7B00F97DC9 /* Categories */,
@@ -190,6 +197,33 @@
 			path = GridLine;
 			sourceTree = "<group>";
 		};
+		04BB602921DF3F0900C667B3 /* Window controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04BB602D21DF3FE000C667B3 /* GridLines window controller */,
+			);
+			path = "Window controllers";
+			sourceTree = "<group>";
+		};
+		04BB602D21DF3FE000C667B3 /* GridLines window controller */ = {
+			isa = PBXGroup;
+			children = (
+				04BB602A21DF3F5A00C667B3 /* GridLinesPreferences.h */,
+				04BB602B21DF3F5A00C667B3 /* GridLinesPreferences.m */,
+				04BB602E21DF415200C667B3 /* View controller */,
+			);
+			path = "GridLines window controller";
+			sourceTree = "<group>";
+		};
+		04BB602E21DF415200C667B3 /* View controller */ = {
+			isa = PBXGroup;
+			children = (
+				04BB602F21DF417C00C667B3 /* GridLinesPreferencesViewController.h */,
+				04BB603021DF417C00C667B3 /* GridLinesPreferencesViewController.m */,
+			);
+			path = "View controller";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -259,12 +293,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0409223E21D2998600F97DC9 /* main.m in Sources */,
+				04BB603121DF417C00C667B3 /* GridLinesPreferencesViewController.m in Sources */,
 				0467B06921D7BE35004BBBBB /* GridToolbar.m in Sources */,
 				0467B05821D69584004BBBBB /* NSColor+XGrid.m in Sources */,
 				04BB602721DF2C3400C667B3 /* GridLine.m in Sources */,
 				0467B05C21D6AC7A004BBBBB /* LinesView.m in Sources */,
 				0409223321D2998400F97DC9 /* AppDelegate.m in Sources */,
 				0489BFA521D7E75F0046B993 /* LinesItemView.m in Sources */,
+				04BB602C21DF3F5A00C667B3 /* GridLinesPreferences.m in Sources */,
 				0490E34221D64E7200254EC2 /* MainViewController.m in Sources */,
 				0409224821D29CAB00F97DC9 /* NSView+XGrid.m in Sources */,
 				0467B06421D7B23C004BBBBB /* LinesItem.m in Sources */,
