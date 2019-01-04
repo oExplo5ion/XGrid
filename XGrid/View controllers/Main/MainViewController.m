@@ -165,6 +165,7 @@
     for (GridLine *line in gridLines) {
         [line removeFromSuperview];
     }
+    [gridLines removeAllObjects];
 }
 
 -(void)showGridLinesPreferences {
