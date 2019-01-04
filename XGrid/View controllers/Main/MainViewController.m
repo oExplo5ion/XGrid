@@ -145,9 +145,9 @@
 -(void)addGridLine:(NSPoint)point direction:(LinesViewDirection)direction {
     CGRect rect;
     uint8 width = 1;
-    if (direction == 0) {
+    if (direction == VERTICAL) {
         rect = CGRectMake(voidSize.width,
-                          point.y,
+                          point.y + 20,
                           NSScreen.mainScreen.frame.size.width,
                           width);
     } else {

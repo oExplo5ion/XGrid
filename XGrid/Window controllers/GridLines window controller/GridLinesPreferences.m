@@ -28,9 +28,6 @@
                                                defer:NO];
     rWindow.backgroundColor            = NSColor.clearColor;
     rWindow.alphaValue                 = 1.0f;
-    rWindow.opaque                     = false;
-    rWindow.hasShadow                  = false;
-    rWindow.movable                    = false;
     rWindow.titlebarAppearsTransparent = true;
     rWindow.titleVisibility            = NSWindowTitleVisible;
     rWindow.title                      = @"Grid preferences";
