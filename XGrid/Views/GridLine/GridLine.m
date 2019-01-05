@@ -1,7 +1,7 @@
 #import "GridLine.h"
 #import "NSView+XGrid.h"
 
-@interface GridLine () {
+@interface GridLine () <NSMenuDelegate> {
     NSView *line;
     LinesViewDirection scrollDirection;
 }
@@ -72,6 +72,7 @@
 
 -(NSMenu *)getMenu {
     NSMenu *menu = [[NSMenu alloc] init];
+    menu.delegate = self;
     NSMenuItem *removeItem = [[NSMenuItem alloc] initWithTitle:@"Remove" action:@selector(menuRemoveAction) keyEquivalent:@""];
     [menu addItem:removeItem];
     return menu;
@@ -80,6 +81,16 @@
 -(void)menuRemoveAction {
     if (self.onMenuRemove == nil) { return; }
     self.onMenuRemove();
+}
+
+#pragma mark Menu degelate
+-(void)menuWillOpen:(NSMenu *)menu {
+    if (line == nil) { return; }
+    [line setBackGroundColor:NSColor.redColor];
+}
+
+-(void)menuDidClose:(NSMenu *)menu {
+    [line setBackGroundColor:NSColor.cyanColor];
 }
 
 #pragma mark UI
