@@ -144,7 +144,7 @@
 #pragma mark Grid line
 -(void)addGridLine:(NSPoint)point direction:(LinesViewDirection)direction {
     CGRect rect;
-    uint8 width = 1;
+    uint8 width = 3;
     if (direction == VERTICAL) {
         rect = CGRectMake(voidSize.width,
                           point.y + 20,
@@ -165,8 +165,24 @@
         [block_gridLine removeFromSuperview];
         [block_gridLines removeObject:block_gridLine];
     };
+    gridLine.onDraged = ^ (NSPoint point) {
+        if (direction == VERTICAL) {
+            block_gridLine.frame = CGRectMake(block_gridLine.frame.origin.x,
+                                              point.y + 20,
+                                              block_gridLine.frame.size.width,
+                                              block_gridLine.frame.size.height);
+            return;
+        }
+        block_gridLine.frame = CGRectMake(point.x,
+                                          block_gridLine.frame.origin.y,
+                                          block_gridLine.frame.size.width,
+                                          block_gridLine.frame.size.height);
+    };
+    
     [self.view addSubview:gridLine];
     [gridLines addObject:gridLine];
+    
+    [gridLine drawLine:direction];
 }
 
 -(void)removeGridLines {
