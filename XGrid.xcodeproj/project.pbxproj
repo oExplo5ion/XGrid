@@ -20,6 +20,7 @@
 		04BB602721DF2C3400C667B3 /* GridLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB602621DF2C3400C667B3 /* GridLine.m */; };
 		04BB602C21DF3F5A00C667B3 /* GridLinesPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB602B21DF3F5A00C667B3 /* GridLinesPreferences.m */; };
 		04BB603121DF417C00C667B3 /* GridLinesPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB603021DF417C00C667B3 /* GridLinesPreferencesViewController.m */; };
+		04F2052621E0EE2600717E3A /* SliderRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2052521E0EE2600717E3A /* SliderRowView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		04BB602B21DF3F5A00C667B3 /* GridLinesPreferences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridLinesPreferences.m; sourceTree = "<group>"; };
 		04BB602F21DF417C00C667B3 /* GridLinesPreferencesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridLinesPreferencesViewController.h; sourceTree = "<group>"; };
 		04BB603021DF417C00C667B3 /* GridLinesPreferencesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridLinesPreferencesViewController.m; sourceTree = "<group>"; };
+		04F2052421E0EE2600717E3A /* SliderRowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SliderRowView.h; sourceTree = "<group>"; };
+		04F2052521E0EE2600717E3A /* SliderRowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SliderRowView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,8 +223,26 @@
 			children = (
 				04BB602F21DF417C00C667B3 /* GridLinesPreferencesViewController.h */,
 				04BB603021DF417C00C667B3 /* GridLinesPreferencesViewController.m */,
+				04F2051D21DFC89D00717E3A /* Row views */,
 			);
 			path = "View controller";
+			sourceTree = "<group>";
+		};
+		04F2051D21DFC89D00717E3A /* Row views */ = {
+			isa = PBXGroup;
+			children = (
+				04F2052721E0EE2A00717E3A /* SliderRowView */,
+			);
+			path = "Row views";
+			sourceTree = "<group>";
+		};
+		04F2052721E0EE2A00717E3A /* SliderRowView */ = {
+			isa = PBXGroup;
+			children = (
+				04F2052421E0EE2600717E3A /* SliderRowView.h */,
+				04F2052521E0EE2600717E3A /* SliderRowView.m */,
+			);
+			path = SliderRowView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +325,7 @@
 				0490E34221D64E7200254EC2 /* MainViewController.m in Sources */,
 				0409224821D29CAB00F97DC9 /* NSView+XGrid.m in Sources */,
 				0467B06421D7B23C004BBBBB /* LinesItem.m in Sources */,
+				04F2052621E0EE2600717E3A /* SliderRowView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

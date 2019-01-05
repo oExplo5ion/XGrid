@@ -13,7 +13,7 @@
     [self setupMenu];
     
     _rWindow = [[NSWindow alloc] initWithContentRect:NSScreen.mainScreen.frame
-                                           styleMask:NSWindowStyleMaskClosable | NSWindowStyleMaskTitled | NSWindowStyleMaskFullSizeContentView
+                                           styleMask:NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskTitled | NSWindowStyleMaskFullSizeContentView
                                              backing:NSBackingStoreBuffered
                                                defer:NO];
     _rWindow.backgroundColor            = NSColor.clearColor;

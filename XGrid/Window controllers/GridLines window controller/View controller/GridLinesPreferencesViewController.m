@@ -1,8 +1,10 @@
 #import "GridLinesPreferencesViewController.h"
 #import "NSView+XGrid.h"
+#import "SliderRowView.h"
 
-@interface GridLinesPreferencesViewController () {
+@interface GridLinesPreferencesViewController () <NSTableViewDelegate, NSTableViewDataSource> {
     NSTableView *tableView;
+    NSString *reuseColumn;
 }
 @end
 
@@ -12,6 +14,7 @@
 {
     self = [super init];
     if (self) {
+        reuseColumn = @"reuseColumn";
         [self setup];
     }
     return self;
@@ -21,16 +24,48 @@
     [self setView:[[NSView alloc]init]];
     [self.view setBackGroundColor:NSColor.whiteColor];
     [[self.view.heightAnchor constraintEqualToConstant:300] setActive:true];
-    [[self.view.widthAnchor constraintEqualToConstant:400] setActive:true];
+    [[self.view.widthAnchor constraintEqualToConstant:300] setActive:true];
+    
+    NSScrollView *scrollView = [[NSScrollView alloc] init];
+    [self.view addSubview:scrollView];
+    scrollView.translatesAutoresizingMaskIntoConstraints = false;
+    [[scrollView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:30] setActive:true];
+    [[scrollView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:0] setActive:true];
+    [[scrollView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:0] setActive:true];
+    [[scrollView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:0] setActive:true];
     
     tableView = [[NSTableView alloc] init];
-    [self.view addSubview:tableView];
-    tableView.translatesAutoresizingMaskIntoConstraints = false;
-    [[tableView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20] setActive:true];
-    [[tableView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:0] setActive:true];
-    [[tableView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:0] setActive:true];
-    [[tableView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:0] setActive:true];
-    tableView.backgroundColor = NSColor.redColor;
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.headerView = nil;
+    [tableView addTableColumn: [[NSTableColumn alloc] initWithIdentifier: reuseColumn]];
+    
+    scrollView.documentView = tableView;
+}
+
+#pragma mark Table view
+-(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    return 1;
+}
+
+-(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+    if (row == 0) {
+        return 60.0f;
+    }
+    return 0.0001f;
+}
+
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    // 0 - slider (size of grid lines)
+    if (row == 0) {
+        return [[SliderRowView alloc] init];
+    }
+    
+    return [[NSView alloc] init];
+}
+
+-(BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
+    return false;
 }
 
 @end
