@@ -10,6 +10,7 @@
 
 @interface SliderRowView () {
     NSTextField *valueLabel;
+    NSSlider *slider;
 }
 
 @end
@@ -33,6 +34,10 @@
     valueLabel.stringValue = [[NSString alloc] initWithFormat:@"%d", slider.integerValue];
 }
 
+-(void)setSliderValue:(uint8)value {
+    slider.integerValue = value;
+}
+
 -(void)setupUI {
     NSTextField *title = [[NSTextField alloc] init];
     [self addSubview:title];
@@ -53,7 +58,7 @@
     [valueLabel setEditable: false];
     valueLabel.stringValue = @"0";
     
-    NSSlider *slider = [[NSSlider alloc] init];
+    slider = [[NSSlider alloc] init];
     [self addSubview:slider];
     slider.translatesAutoresizingMaskIntoConstraints = false;
     [[slider.topAnchor constraintEqualToAnchor:title.bottomAnchor constant: 5] setActive:true];

@@ -1,6 +1,7 @@
 #import "GridLinesPreferencesViewController.h"
 #import "NSView+XGrid.h"
 #import "SliderRowView.h"
+#import "PersistantStorage.h"
 
 @interface GridLinesPreferencesViewController () <NSTableViewDelegate, NSTableViewDataSource> {
     NSTableView *tableView;
@@ -58,7 +59,9 @@
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     // 0 - slider (size of grid lines)
     if (row == 0) {
-        return [[SliderRowView alloc] init];
+        SliderRowView *row = [[SliderRowView alloc] init];
+        [row setSliderValue: PersistantStorage.lineSize];
+        return row;
     }
     
     return [[NSView alloc] init];

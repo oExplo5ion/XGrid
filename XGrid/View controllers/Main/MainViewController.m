@@ -151,7 +151,7 @@
                           NSScreen.mainScreen.frame.size.width,
                           width);
     } else {
-        rect = CGRectMake(point.x,
+        rect = CGRectMake(point.x - 1,
                           -voidSize.height - 20,
                           width,
                           NSScreen.mainScreen.frame.size.height);

@@ -9,5 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface SliderRowView : NSView
-
+-(void)setSliderValue:(uint8)value;
 @end

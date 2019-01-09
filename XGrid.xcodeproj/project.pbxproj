@@ -21,6 +21,7 @@
 		04BB602C21DF3F5A00C667B3 /* GridLinesPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB602B21DF3F5A00C667B3 /* GridLinesPreferences.m */; };
 		04BB603121DF417C00C667B3 /* GridLinesPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB603021DF417C00C667B3 /* GridLinesPreferencesViewController.m */; };
 		04F2052621E0EE2600717E3A /* SliderRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2052521E0EE2600717E3A /* SliderRowView.m */; };
+		04F2052B21E1F11300717E3A /* PersistantStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2052A21E1F11300717E3A /* PersistantStorage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		04BB603021DF417C00C667B3 /* GridLinesPreferencesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridLinesPreferencesViewController.m; sourceTree = "<group>"; };
 		04F2052421E0EE2600717E3A /* SliderRowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SliderRowView.h; sourceTree = "<group>"; };
 		04F2052521E0EE2600717E3A /* SliderRowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SliderRowView.m; sourceTree = "<group>"; };
+		04F2052921E1F11300717E3A /* PersistantStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersistantStorage.h; sourceTree = "<group>"; };
+		04F2052A21E1F11300717E3A /* PersistantStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersistantStorage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,7 @@
 				0409223221D2998400F97DC9 /* AppDelegate.m */,
 				04BB602921DF3F0900C667B3 /* Window controllers */,
 				0409224921D2A19C00F97DC9 /* View controllers */,
+				04F2052821E1F0F600717E3A /* Classes */,
 				0467B05921D6AC58004BBBBB /* Views */,
 				0409224521D29C7B00F97DC9 /* Categories */,
 				0409223721D2998600F97DC9 /* Assets.xcassets */,
@@ -245,6 +249,15 @@
 			path = SliderRowView;
 			sourceTree = "<group>";
 		};
+		04F2052821E1F0F600717E3A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				04F2052921E1F11300717E3A /* PersistantStorage.h */,
+				04F2052A21E1F11300717E3A /* PersistantStorage.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -317,6 +330,7 @@
 				04BB603121DF417C00C667B3 /* GridLinesPreferencesViewController.m in Sources */,
 				0467B06921D7BE35004BBBBB /* GridToolbar.m in Sources */,
 				0467B05821D69584004BBBBB /* NSColor+XGrid.m in Sources */,
+				04F2052B21E1F11300717E3A /* PersistantStorage.m in Sources */,
 				04BB602721DF2C3400C667B3 /* GridLine.m in Sources */,
 				0467B05C21D6AC7A004BBBBB /* LinesView.m in Sources */,
 				0409223321D2998400F97DC9 /* AppDelegate.m in Sources */,
