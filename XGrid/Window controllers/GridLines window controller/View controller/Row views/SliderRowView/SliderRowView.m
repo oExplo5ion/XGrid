@@ -31,7 +31,11 @@
 }
 
 -(void)sliderValueChanged:(NSSlider *)slider {
-    valueLabel.stringValue = [[NSString alloc] initWithFormat:@"%d", slider.integerValue];
+    valueLabel.stringValue = [[NSString alloc] initWithFormat:@"%d", (int)slider.integerValue];
+    
+    if (self.onSliderChange != nil) {
+        self.onSliderChange((int)slider.integerValue);
+    }
 }
 
 -(void)setSliderValue:(uint8)value {
@@ -64,8 +68,8 @@
     [[slider.topAnchor constraintEqualToAnchor:title.bottomAnchor constant: 5] setActive:true];
     [[slider.leftAnchor constraintEqualToAnchor:self.leftAnchor constant: 5] setActive:true];
     [[slider.rightAnchor constraintEqualToAnchor:valueLabel.leftAnchor constant: -5] setActive:true];
-    slider.minValue = 1.0f;
-    slider.maxValue = 5.0f;
+    slider.minValue = 2.0f;
+    slider.maxValue = 6.0f;
     slider.target = self;
     slider.action = @selector(sliderValueChanged:);
 }

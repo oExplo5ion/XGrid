@@ -31,7 +31,13 @@
     rWindow.titlebarAppearsTransparent = true;
     rWindow.titleVisibility            = NSWindowTitleVisible;
     rWindow.title                      = @"Grid preferences";
-    rWindow.contentViewController      = [[GridLinesPreferencesViewController alloc] init];
+    
+    GridLinesPreferencesViewController *vc =  [[GridLinesPreferencesViewController alloc] init];
+    vc.onSliderChange = ^(int value) {
+        if (self.onSliderChange == nil) { return; }
+        self.onSliderChange(value);
+    };
+    rWindow.contentViewController = vc;
     
     [self setWindow:rWindow];
     [rWindow center];

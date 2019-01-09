@@ -3,6 +3,8 @@
 
 @interface GridLine : NSView
 
+@property LinesViewDirection scrollDirection;
+
 /**
  * Draw line vivisble to user
  */

@@ -194,7 +194,26 @@
 
 -(void)showGridLinesPreferences {
     GridLinesPreferences *prefs = [[GridLinesPreferences alloc] init];
+    prefs.onSliderChange = ^(int value) {
+        [self changeLinesWidth:value];
+    };
     [prefs showWindow:self];
+}
+
+-(void)changeLinesWidth:(int)width {
+    for (GridLine *g in gridLines) {
+        if (g.scrollDirection == HORIZONTAL) {
+            g.frame = CGRectMake(g.frame.origin.x,
+                                 g.frame.origin.y,
+                                 width,
+                                 g.frame.size.height);
+            return;
+        }
+        g.frame = CGRectMake(g.frame.origin.x,
+                             g.frame.origin.y,
+                             g.frame.size.width,
+                             width);
+    }
 }
 
 @end

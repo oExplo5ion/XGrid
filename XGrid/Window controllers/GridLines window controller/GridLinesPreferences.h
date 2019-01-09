@@ -2,4 +2,6 @@
 
 @interface GridLinesPreferences : NSWindowController
 
+@property (nonatomic, copy) void (^onSliderChange)(int);
+
 @end

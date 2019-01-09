@@ -3,7 +3,6 @@
 
 @interface GridLine () <NSMenuDelegate> {
     NSView *line;
-    LinesViewDirection scrollDirection;
 }
 
 @end
@@ -44,7 +43,7 @@
 
 #pragma mark Mouse events
 -(void)mouseEntered:(NSEvent *)event {
-    __block LinesViewDirection block_direction = scrollDirection;
+    __block LinesViewDirection block_direction = _scrollDirection;
     dispatch_async(dispatch_get_main_queue(), ^{
         if (block_direction == VERTICAL) {
             [[NSCursor resizeUpDownCursor] set];
@@ -95,7 +94,7 @@
 
 #pragma mark UI
 -(void)drawLine:(LinesViewDirection)direction {
-    scrollDirection = direction;
+    _scrollDirection = direction;
     
     [line removeFromSuperview];
     line = nil;

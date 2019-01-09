@@ -60,6 +60,10 @@
     // 0 - slider (size of grid lines)
     if (row == 0) {
         SliderRowView *row = [[SliderRowView alloc] init];
+        row.onSliderChange = ^(int value) {
+            if (self.onSliderChange == nil) { return; }
+            self.onSliderChange(value);
+        };
         [row setSliderValue: PersistantStorage.lineSize];
         return row;
     }
