@@ -11,6 +11,8 @@
 		0409223821D2998600F97DC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0409223721D2998600F97DC9 /* Assets.xcassets */; };
 		0409223E21D2998600F97DC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0409223D21D2998600F97DC9 /* main.m */; };
 		0409224821D29CAB00F97DC9 /* NSView+XGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0409224721D29CAB00F97DC9 /* NSView+XGrid.m */; };
+		045E1C2F21E9FA6800774D9B /* ColorRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E1C2E21E9FA6800774D9B /* ColorRowView.m */; };
+		045E1C3321E9FABD00774D9B /* ColorCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E1C3221E9FABD00774D9B /* ColorCircleView.m */; };
 		0467B05821D69584004BBBBB /* NSColor+XGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467B05721D69584004BBBBB /* NSColor+XGrid.m */; };
 		0467B05C21D6AC7A004BBBBB /* LinesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467B05B21D6AC7A004BBBBB /* LinesView.m */; };
 		0467B06421D7B23C004BBBBB /* LinesItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467B06321D7B23C004BBBBB /* LinesItem.m */; };
@@ -34,6 +36,10 @@
 		0409223F21D2998600F97DC9 /* Ruler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ruler.entitlements; sourceTree = "<group>"; };
 		0409224621D29CAB00F97DC9 /* NSView+XGrid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+XGrid.h"; sourceTree = "<group>"; };
 		0409224721D29CAB00F97DC9 /* NSView+XGrid.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSView+XGrid.m"; sourceTree = "<group>"; };
+		045E1C2D21E9FA6800774D9B /* ColorRowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorRowView.h; sourceTree = "<group>"; };
+		045E1C2E21E9FA6800774D9B /* ColorRowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorRowView.m; sourceTree = "<group>"; };
+		045E1C3121E9FABD00774D9B /* ColorCircleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorCircleView.h; sourceTree = "<group>"; };
+		045E1C3221E9FABD00774D9B /* ColorCircleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorCircleView.m; sourceTree = "<group>"; };
 		0467B05621D69584004BBBBB /* NSColor+XGrid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSColor+XGrid.h"; sourceTree = "<group>"; };
 		0467B05721D69584004BBBBB /* NSColor+XGrid.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSColor+XGrid.m"; sourceTree = "<group>"; };
 		0467B05A21D6AC7A004BBBBB /* LinesView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinesView.h; sourceTree = "<group>"; };
@@ -127,6 +133,25 @@
 				0490E34121D64E7200254EC2 /* MainViewController.m */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		045E1C2C21E9FA4D00774D9B /* ColorRowView */ = {
+			isa = PBXGroup;
+			children = (
+				045E1C2D21E9FA6800774D9B /* ColorRowView.h */,
+				045E1C2E21E9FA6800774D9B /* ColorRowView.m */,
+				045E1C3021E9FAA400774D9B /* ColorCircleView */,
+			);
+			path = ColorRowView;
+			sourceTree = "<group>";
+		};
+		045E1C3021E9FAA400774D9B /* ColorCircleView */ = {
+			isa = PBXGroup;
+			children = (
+				045E1C3121E9FABD00774D9B /* ColorCircleView.h */,
+				045E1C3221E9FABD00774D9B /* ColorCircleView.m */,
+			);
+			path = ColorCircleView;
 			sourceTree = "<group>";
 		};
 		0467B05421D69564004BBBBB /* NSView */ = {
@@ -235,6 +260,7 @@
 		04F2051D21DFC89D00717E3A /* Row views */ = {
 			isa = PBXGroup;
 			children = (
+				045E1C2C21E9FA4D00774D9B /* ColorRowView */,
 				04F2052721E0EE2A00717E3A /* SliderRowView */,
 			);
 			path = "Row views";
@@ -331,8 +357,10 @@
 				0467B06921D7BE35004BBBBB /* GridToolbar.m in Sources */,
 				0467B05821D69584004BBBBB /* NSColor+XGrid.m in Sources */,
 				04F2052B21E1F11300717E3A /* PersistantStorage.m in Sources */,
+				045E1C2F21E9FA6800774D9B /* ColorRowView.m in Sources */,
 				04BB602721DF2C3400C667B3 /* GridLine.m in Sources */,
 				0467B05C21D6AC7A004BBBBB /* LinesView.m in Sources */,
+				045E1C3321E9FABD00774D9B /* ColorCircleView.m in Sources */,
 				0409223321D2998400F97DC9 /* AppDelegate.m in Sources */,
 				0489BFA521D7E75F0046B993 /* LinesItemView.m in Sources */,
 				04BB602C21DF3F5A00C667B3 /* GridLinesPreferences.m in Sources */,

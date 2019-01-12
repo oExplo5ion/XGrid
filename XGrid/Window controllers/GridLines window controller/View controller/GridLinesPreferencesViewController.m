@@ -2,6 +2,7 @@
 #import "NSView+XGrid.h"
 #import "SliderRowView.h"
 #import "PersistantStorage.h"
+#import "ColorRowView.h"
 
 @interface GridLinesPreferencesViewController () <NSTableViewDelegate, NSTableViewDataSource> {
     NSTableView *tableView;
@@ -46,12 +47,17 @@
 
 #pragma mark Table view
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return 1;
+    return 2;
 }
 
 -(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+    // 0 - slider (size of grid lines)
     if (row == 0) {
         return 60.0f;
+    }
+    // 1 - lines color {
+    if (row == 1) {
+        return 58.0f;
     }
     return 0.0001f;
 }
@@ -67,7 +73,11 @@
         [row setSliderValue: PersistantStorage.lineSize];
         return row;
     }
-    
+    // 1 - lines color
+    if (row == 1) {
+        ColorRowView *row = [[ColorRowView alloc] init];
+        return row;
+    }
     return [[NSView alloc] init];
 }
 
