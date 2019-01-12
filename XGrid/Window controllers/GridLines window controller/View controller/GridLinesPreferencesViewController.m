@@ -76,6 +76,10 @@
     // 1 - lines color
     if (row == 1) {
         ColorRowView *row = [[ColorRowView alloc] init];
+        row.onColorSelected = ^(NSColor *color) {
+            if (self.onColorSelected == nil) { return; }
+            self.onColorSelected(color);
+        };
         return row;
     }
     return [[NSView alloc] init];

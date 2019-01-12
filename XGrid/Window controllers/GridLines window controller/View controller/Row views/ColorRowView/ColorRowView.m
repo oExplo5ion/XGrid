@@ -27,6 +27,11 @@
     return self;
 }
 
+-(void)colorSelected:(NSColor*)color {
+    if (self.onColorSelected == nil) { return; }
+    self.onColorSelected(color);
+}
+
 -(void)setupUI {
     NSTextField *title = [[NSTextField alloc] init];
     [self addSubview:title];
@@ -38,6 +43,7 @@
     [title setEditable:false];
     title.stringValue = @"Line color";
     
+    // TODO: Replace with collection view
     ColorCircleView *defaultCircle = [[ColorCircleView alloc] init];
     [self addSubview:defaultCircle];
     defaultCircle.translatesAutoresizingMaskIntoConstraints = false;
@@ -46,6 +52,9 @@
     [[defaultCircle.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:5] setActive:true];
     [[defaultCircle.widthAnchor constraintEqualToConstant:size] setActive:true];
     [defaultCircle setCurrentColor:NSColor.cyanColor];
+    defaultCircle.onClick = ^(NSColor *color) {
+        [self colorSelected:color];
+    };
 }
 
 @end

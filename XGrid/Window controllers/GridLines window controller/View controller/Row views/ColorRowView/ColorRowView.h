@@ -10,4 +10,6 @@
 
 @interface ColorRowView : NSView
 
+@property (nonatomic, copy) void (^onColorSelected)(NSColor*);
+
 @end

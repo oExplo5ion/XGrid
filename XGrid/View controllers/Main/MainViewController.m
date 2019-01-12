@@ -198,6 +198,9 @@
     prefs.onSliderChange = ^(uint8 value) {
         [self changeLinesWidth:value];
     };
+    prefs.onColorSelected = ^(NSColor *color) {
+        NSLog(@"Color selected");
+    };
     [prefs showWindow:self];
 }
 

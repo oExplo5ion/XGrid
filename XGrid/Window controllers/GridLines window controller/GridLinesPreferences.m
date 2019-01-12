@@ -37,6 +37,10 @@
         if (self.onSliderChange == nil) { return; }
         self.onSliderChange(value);
     };
+    vc.onColorSelected = ^(NSColor *color) {
+        if (self.onColorSelected == nil) { return; }
+        self.onColorSelected(color);
+    };
     rWindow.contentViewController = vc;
     
     [self setWindow:rWindow];

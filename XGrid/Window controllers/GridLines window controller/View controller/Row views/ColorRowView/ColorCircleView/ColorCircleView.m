@@ -17,6 +17,10 @@
 
 @implementation ColorCircleView
 
+-(BOOL)acceptsFirstResponder {
+    return true;
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -35,7 +39,12 @@
 }
 
 -(void)mouseUp:(NSEvent *)event {
-    NSLog(@"ez ez ez");
+    if (self.onClick == nil) { return; }
+    self.onClick(currentColor);
+}
+
+-(void)mouseDown:(NSEvent *)event {
+    
 }
 
 -(void)setCurrentColor:(NSColor *)color {
