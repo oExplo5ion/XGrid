@@ -24,6 +24,7 @@
     _rWindow.titlebarAppearsTransparent = true;
     _rWindow.titleVisibility            = NSWindowTitleHidden;
     _rWindow.contentViewController      = [[MainViewController alloc] init];
+    [[_rWindow standardWindowButton:NSWindowZoomButton] setHidden:true];
     
     _windowController = [[NSWindowController alloc] init];
     [_windowController setWindow:_rWindow];

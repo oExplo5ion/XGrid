@@ -31,6 +31,8 @@
     rWindow.titlebarAppearsTransparent = true;
     rWindow.titleVisibility            = NSWindowTitleVisible;
     rWindow.title                      = @"Grid preferences";
+    [[rWindow standardWindowButton:NSWindowZoomButton] setHidden:true];
+    [[rWindow standardWindowButton:NSWindowMiniaturizeButton] setHidden:true];
     
     GridLinesPreferencesViewController *vc =  [[GridLinesPreferencesViewController alloc] init];
     vc.onSliderChange = ^(uint8 value) {
