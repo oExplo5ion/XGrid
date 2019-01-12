@@ -33,7 +33,7 @@
     rWindow.title                      = @"Grid preferences";
     
     GridLinesPreferencesViewController *vc =  [[GridLinesPreferencesViewController alloc] init];
-    vc.onSliderChange = ^(int value) {
+    vc.onSliderChange = ^(uint8 value) {
         if (self.onSliderChange == nil) { return; }
         self.onSliderChange(value);
     };

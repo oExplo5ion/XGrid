@@ -13,7 +13,7 @@
 - (instancetype)initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
     if (self) {
-        [self setupUI];
+        
     }
     return self;
 }
@@ -22,7 +22,7 @@
 {
     self = [super init];
     if (self) {
-        [self setupUI];
+        
     }
     return self;
 }
@@ -118,10 +118,6 @@
     [[line.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant: 0] setActive:true];
     [[line.leftAnchor constraintEqualToAnchor:self.leftAnchor constant: self.bounds.size.width / multiplier] setActive:true];
     [[line.rightAnchor constraintEqualToAnchor:self.rightAnchor constant: self.bounds.size.width / multiplier] setActive:true];
-}
-
--(void)setupUI {
-//    [self setBackGroundColor:NSColor.cyanColor];
 }
 
 @end

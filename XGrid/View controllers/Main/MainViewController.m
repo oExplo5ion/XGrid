@@ -10,6 +10,7 @@
     NSView *templateView;
     CGSize voidSize;
     NSMutableSet *gridLines;
+    uint8 linesWidth;
 }
 @property GridToolbar *gridToolBar;
 @property LinesView *topLinesView;
@@ -21,6 +22,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        linesWidth = 3;
         gridLines = [[NSMutableSet alloc] init];
         [self drawLineMenus];
         [self setupMenu];
@@ -71,7 +73,7 @@
         [this removeTemplate];
     };
     _topLinesView.onMouseLeftClick = ^(NSPoint point) {
-        [this addGridLine:point direction:1];
+        [this addGridLine:point direction:HORIZONTAL];
     };
     
     _leftLinesView = [[LinesView alloc] init];
@@ -82,7 +84,7 @@
     [[_leftLinesView.leftAnchor constraintEqualToAnchor:voidView.leftAnchor constant:0] setActive:true];
     [[_leftLinesView.rightAnchor constraintEqualToAnchor:voidView.rightAnchor constant:0] setActive:true];
     _leftLinesView.onMouseMoved = ^(NSPoint point) {
-        [this drawTemplateView:point direction:0];
+        [this drawTemplateView:point direction:VERTICAL];
     };
     _leftLinesView.onMouseExited = ^ {
         [this removeTemplate];
@@ -144,16 +146,15 @@
 #pragma mark Grid line
 -(void)addGridLine:(NSPoint)point direction:(LinesViewDirection)direction {
     CGRect rect;
-    uint8 width = 3;
     if (direction == VERTICAL) {
         rect = CGRectMake(voidSize.width,
                           point.y + 20,
                           NSScreen.mainScreen.frame.size.width,
-                          width);
+                          linesWidth);
     } else {
         rect = CGRectMake(point.x - 1,
                           -voidSize.height - 20,
-                          width,
+                          linesWidth,
                           NSScreen.mainScreen.frame.size.height);
     }
     
@@ -194,25 +195,27 @@
 
 -(void)showGridLinesPreferences {
     GridLinesPreferences *prefs = [[GridLinesPreferences alloc] init];
-    prefs.onSliderChange = ^(int value) {
+    prefs.onSliderChange = ^(uint8 value) {
         [self changeLinesWidth:value];
     };
     [prefs showWindow:self];
 }
 
--(void)changeLinesWidth:(int)width {
+-(void)changeLinesWidth:(uint8)width {
+    linesWidth = width;
     for (GridLine *g in gridLines) {
         if (g.scrollDirection == HORIZONTAL) {
             g.frame = CGRectMake(g.frame.origin.x,
                                  g.frame.origin.y,
                                  width,
                                  g.frame.size.height);
-            return;
         }
-        g.frame = CGRectMake(g.frame.origin.x,
-                             g.frame.origin.y,
-                             g.frame.size.width,
-                             width);
+        if (g.scrollDirection == VERTICAL) {
+            g.frame = CGRectMake(g.frame.origin.x,
+                                 g.frame.origin.y,
+                                 g.frame.size.width,
+                                 width);
+        }
     }
 }
 

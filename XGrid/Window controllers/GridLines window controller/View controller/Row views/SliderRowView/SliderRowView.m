@@ -68,7 +68,7 @@
     [[slider.topAnchor constraintEqualToAnchor:title.bottomAnchor constant: 5] setActive:true];
     [[slider.leftAnchor constraintEqualToAnchor:self.leftAnchor constant: 5] setActive:true];
     [[slider.rightAnchor constraintEqualToAnchor:valueLabel.leftAnchor constant: -5] setActive:true];
-    slider.minValue = 2.0f;
+    slider.minValue = 3.0f;
     slider.maxValue = 6.0f;
     slider.target = self;
     slider.action = @selector(sliderValueChanged:);
