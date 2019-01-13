@@ -199,7 +199,7 @@
         [self changeLinesWidth:value];
     };
     prefs.onColorSelected = ^(NSColor *color) {
-        NSLog(@"Color selected");
+        [self changeLinesColor:color];
     };
     [prefs showWindow:self];
 }
@@ -219,6 +219,12 @@
                                  g.frame.size.width,
                                  width);
         }
+    }
+}
+
+-(void)changeLinesColor:(NSColor*)color {
+    for (GridLine *g in gridLines) {
+        [g setLineColor:color];
     }
 }
 

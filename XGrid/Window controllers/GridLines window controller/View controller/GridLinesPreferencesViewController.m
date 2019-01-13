@@ -57,7 +57,7 @@
     }
     // 1 - lines color {
     if (row == 1) {
-        return 58.0f;
+        return 60.0f;
     }
     return 0.0001f;
 }

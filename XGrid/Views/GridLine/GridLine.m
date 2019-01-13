@@ -120,4 +120,8 @@
     [[line.rightAnchor constraintEqualToAnchor:self.rightAnchor constant: self.bounds.size.width / multiplier] setActive:true];
 }
 
+-(void)setLineColor:(NSColor *)color {
+    [line setBackGroundColor:color];
+}
+
 @end

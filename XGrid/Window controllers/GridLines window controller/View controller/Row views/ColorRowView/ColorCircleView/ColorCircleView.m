@@ -49,6 +49,7 @@
 
 -(void)setCurrentColor:(NSColor *)color {
     if (colorView == nil || colorView.superview == nil) { return; }
+    currentColor = color;
     [colorView setBackGroundColor:color];
 }
 

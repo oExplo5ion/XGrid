@@ -10,6 +10,8 @@
  */
 -(void)drawLine:(LinesViewDirection)direction;
 
+-(void)setLineColor:(NSColor*)color;
+
 /**
  * User has dragged view
  */

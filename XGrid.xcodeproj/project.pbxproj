@@ -11,6 +11,7 @@
 		0409223821D2998600F97DC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0409223721D2998600F97DC9 /* Assets.xcassets */; };
 		0409223E21D2998600F97DC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0409223D21D2998600F97DC9 /* main.m */; };
 		0409224821D29CAB00F97DC9 /* NSView+XGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0409224721D29CAB00F97DC9 /* NSView+XGrid.m */; };
+		042EADD821EB209400AE9A52 /* ColorCircleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 042EADD721EB209400AE9A52 /* ColorCircleItem.m */; };
 		045E1C2F21E9FA6800774D9B /* ColorRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E1C2E21E9FA6800774D9B /* ColorRowView.m */; };
 		045E1C3321E9FABD00774D9B /* ColorCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E1C3221E9FABD00774D9B /* ColorCircleView.m */; };
 		0467B05821D69584004BBBBB /* NSColor+XGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467B05721D69584004BBBBB /* NSColor+XGrid.m */; };
@@ -36,6 +37,8 @@
 		0409223F21D2998600F97DC9 /* Ruler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ruler.entitlements; sourceTree = "<group>"; };
 		0409224621D29CAB00F97DC9 /* NSView+XGrid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+XGrid.h"; sourceTree = "<group>"; };
 		0409224721D29CAB00F97DC9 /* NSView+XGrid.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSView+XGrid.m"; sourceTree = "<group>"; };
+		042EADD621EB209400AE9A52 /* ColorCircleItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorCircleItem.h; sourceTree = "<group>"; };
+		042EADD721EB209400AE9A52 /* ColorCircleItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorCircleItem.m; sourceTree = "<group>"; };
 		045E1C2D21E9FA6800774D9B /* ColorRowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorRowView.h; sourceTree = "<group>"; };
 		045E1C2E21E9FA6800774D9B /* ColorRowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorRowView.m; sourceTree = "<group>"; };
 		045E1C3121E9FABD00774D9B /* ColorCircleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorCircleView.h; sourceTree = "<group>"; };
@@ -135,11 +138,21 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		042EADD521EB206F00AE9A52 /* ColorCircleItem */ = {
+			isa = PBXGroup;
+			children = (
+				042EADD621EB209400AE9A52 /* ColorCircleItem.h */,
+				042EADD721EB209400AE9A52 /* ColorCircleItem.m */,
+			);
+			path = ColorCircleItem;
+			sourceTree = "<group>";
+		};
 		045E1C2C21E9FA4D00774D9B /* ColorRowView */ = {
 			isa = PBXGroup;
 			children = (
 				045E1C2D21E9FA6800774D9B /* ColorRowView.h */,
 				045E1C2E21E9FA6800774D9B /* ColorRowView.m */,
+				042EADD521EB206F00AE9A52 /* ColorCircleItem */,
 				045E1C3021E9FAA400774D9B /* ColorCircleView */,
 			);
 			path = ColorRowView;
@@ -355,6 +368,7 @@
 				0409223E21D2998600F97DC9 /* main.m in Sources */,
 				04BB603121DF417C00C667B3 /* GridLinesPreferencesViewController.m in Sources */,
 				0467B06921D7BE35004BBBBB /* GridToolbar.m in Sources */,
+				042EADD821EB209400AE9A52 /* ColorCircleItem.m in Sources */,
 				0467B05821D69584004BBBBB /* NSColor+XGrid.m in Sources */,
 				04F2052B21E1F11300717E3A /* PersistantStorage.m in Sources */,
 				045E1C2F21E9FA6800774D9B /* ColorRowView.m in Sources */,

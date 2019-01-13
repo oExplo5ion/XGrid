@@ -62,10 +62,10 @@
     scrollView = [[NSScrollView alloc] init];
     [self addSubview:scrollView];
     scrollView.translatesAutoresizingMaskIntoConstraints = false;
-    [[scrollView.topAnchor constraintEqualToAnchor:self.topAnchor constant:0] setActive:true];
-    [[scrollView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:0] setActive:true];
-    [[scrollView.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:0] setActive:true];
-    [[scrollView.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:0] setActive:true];
+    [[scrollView.topAnchor constraintEqualToAnchor: self.topAnchor constant:0] setActive: true];
+    [[scrollView.bottomAnchor constraintEqualToAnchor: self.bottomAnchor constant:0] setActive: true];
+    [[scrollView.leftAnchor constraintEqualToAnchor: self.leftAnchor constant:0] setActive: true];
+    [[scrollView.rightAnchor constraintEqualToAnchor: self.rightAnchor constant:0] setActive: true];
     
     collectionView = [[NSCollectionView alloc] init];
     [collectionView registerClass:LinesItem.class forItemWithIdentifier:reuseLinesItem];
