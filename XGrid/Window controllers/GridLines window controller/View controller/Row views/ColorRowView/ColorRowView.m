@@ -26,7 +26,7 @@
 {
     self = [super init];
     if (self) {
-        size = 40;
+        size = 35;
         reuseColorItem = @"reuseColorItem";
         [self setupUI];
     }
@@ -78,7 +78,7 @@
 }
 
 - (NSInteger)collectionView:(NSCollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 2;
+    return 6;
 }
 
 - (NSCollectionViewItem *)collectionView:(NSCollectionView *)collectionView itemForRepresentedObjectAtIndexPath:(NSIndexPath *)indexPath {
@@ -89,6 +89,22 @@
     // red
     if (indexPath.item == 1) {
         return [self getColorCircleItemWithColor:NSColor.redColor];
+    }
+    // green
+    if (indexPath.item == 2) {
+        return [self getColorCircleItemWithColor:NSColor.greenColor];
+    }
+    // yellow
+    if (indexPath.item == 3) {
+        return [self getColorCircleItemWithColor:NSColor.yellowColor];
+    }
+    // gray
+    if (indexPath.item == 4) {
+        return [self getColorCircleItemWithColor:NSColor.grayColor];
+    }
+    // red
+    if (indexPath.item == 5) {
+        return [self getColorCircleItemWithColor:NSColor.blackColor];
     }
     return [[NSCollectionViewItem alloc] init];
 }
