@@ -5,8 +5,10 @@
 #import "GridToolbar.h"
 #import "GridLine.h"
 #import "GridLinesPreferences.h"
+#import "LinesSettings.h"
 
 @interface MainViewController () {
+    LinesSettings *linesSettings;
     NSView *templateView;
     CGSize voidSize;
     NSMutableSet *gridLines;
@@ -24,6 +26,7 @@
     if (self) {
         linesWidth = 3;
         gridLines = [[NSMutableSet alloc] init];
+        linesSettings = [[LinesSettings alloc] init];
         [self drawLineMenus];
         [self setupMenu];
     }
@@ -195,13 +198,25 @@
 
 -(void)showGridLinesPreferences {
     GridLinesPreferences *prefs = [[GridLinesPreferences alloc] init];
+    prefs.linesSettings = linesSettings;
     prefs.onSliderChange = ^(uint8 value) {
         [self changeLinesWidth:value];
     };
     prefs.onColorSelected = ^(NSColor *color) {
         [self changeLinesColor:color];
     };
+    __block LinesSettings *s = linesSettings;
+    __block MainViewController *this = self;
+    prefs.willClose = ^(LinesSettings *settings) {
+        s = settings;
+        [this updateLines];
+    };
     [prefs showWindow:self];
+}
+
+-(void)updateLines {
+    [self changeLinesWidth:linesSettings.width];
+    [self changeLinesColor:linesSettings.color];
 }
 
 -(void)changeLinesWidth:(uint8)width {

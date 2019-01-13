@@ -3,6 +3,7 @@
 #import "SliderRowView.h"
 #import "PersistantStorage.h"
 #import "ColorRowView.h"
+#import "ButtonRowView.h"
 
 @interface GridLinesPreferencesViewController () <NSTableViewDelegate, NSTableViewDataSource> {
     NSTableView *tableView;
@@ -47,7 +48,7 @@
 
 #pragma mark Table view
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return 2;
+    return 3;
 }
 
 -(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
@@ -55,20 +56,30 @@
     if (row == 0) {
         return 60.0f;
     }
-    // 1 - lines color {
+    // 1 - lines color
     if (row == 1) {
+        return 60.0f;
+    }
+    // 2 - buuton (save)
+    if (row == 2) {
         return 60.0f;
     }
     return 0.0001f;
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    __block LinesSettings *settings = _linesSettings;
+    __block GridLinesPreferencesViewController *this = self;
     // 0 - slider (size of grid lines)
     if (row == 0) {
         SliderRowView *row = [[SliderRowView alloc] init];
         row.onSliderChange = ^(int value) {
-            if (self.onSliderChange == nil) { return; }
-            self.onSliderChange(value);
+            if (settings != nil) {
+                settings.width = value;
+            }
+            if (self.onSliderChange != nil) {
+                self.onSliderChange(value);
+            }
         };
         [row setSliderValue: PersistantStorage.lineSize];
         return row;
@@ -77,8 +88,23 @@
     if (row == 1) {
         ColorRowView *row = [[ColorRowView alloc] init];
         row.onColorSelected = ^(NSColor *color) {
-            if (self.onColorSelected == nil) { return; }
-            self.onColorSelected(color);
+            if (settings != nil) {
+                settings.color = color;
+            }
+            if (self.onColorSelected != nil) {
+                self.onColorSelected(color);
+            }
+        };
+        return row;
+    }
+    // 2 - buuton (save)
+    if (row == 2) {
+        ButtonRowView *row = [[ButtonRowView alloc] init];
+        [row setButtonTitle:@"SAVE"];
+        row.onButtonClick = ^{
+            if (this.saveClicked == nil) { return; }
+            if (settings == nil) { return; }
+            this.saveClicked(settings);
         };
         return row;
     }

@@ -1,13 +1,14 @@
 #import "GridLinesPreferences.h"
 #import "GridLinesPreferencesViewController.h"
 
-@interface GridLinesPreferences () {
+@interface GridLinesPreferences () <NSWindowDelegate> {
     NSWindow *rWindow;
 }
 @end
 
 @implementation GridLinesPreferences
 
+#pragma mark Ovverides
 - (instancetype)init
 {
     self = [super init];
@@ -21,6 +22,14 @@
     [super windowDidLoad];
 }
 
+#pragma mark Window delegates
+-(void)windowWillClose:(NSNotification *)notification {
+    if (self.willClose == nil)  { return; }
+    if (_linesSettings == nil)   { return; }
+    self.willClose(_linesSettings);
+}
+
+#pragma mark UI
 -(void)setup {
     rWindow = [[NSWindow alloc] initWithContentRect:NSScreen.mainScreen.frame
                                            styleMask:NSWindowStyleMaskClosable | NSWindowStyleMaskTitled | NSWindowStyleMaskFullSizeContentView
@@ -33,6 +42,7 @@
     rWindow.title                      = @"Grid preferences";
     [[rWindow standardWindowButton:NSWindowZoomButton] setHidden:true];
     [[rWindow standardWindowButton:NSWindowMiniaturizeButton] setHidden:true];
+    rWindow.delegate = self;
     
     GridLinesPreferencesViewController *vc =  [[GridLinesPreferencesViewController alloc] init];
     vc.onSliderChange = ^(uint8 value) {
@@ -43,6 +53,13 @@
         if (self.onColorSelected == nil) { return; }
         self.onColorSelected(color);
     };
+    __block LinesSettings *settings = _linesSettings;
+    __block NSWindow *rwin = rWindow;
+    vc.saveClicked = ^(LinesSettings *newSettings) {
+        settings = newSettings;
+        [rwin close];
+    };
+    vc.linesSettings = _linesSettings;
     rWindow.contentViewController = vc;
     
     [self setWindow:rWindow];

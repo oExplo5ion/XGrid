@@ -12,6 +12,8 @@
 		0409223E21D2998600F97DC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0409223D21D2998600F97DC9 /* main.m */; };
 		0409224821D29CAB00F97DC9 /* NSView+XGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0409224721D29CAB00F97DC9 /* NSView+XGrid.m */; };
 		042EADD821EB209400AE9A52 /* ColorCircleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 042EADD721EB209400AE9A52 /* ColorCircleItem.m */; };
+		042EADDD21EB8BF300AE9A52 /* LinesSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 042EADDC21EB8BF300AE9A52 /* LinesSettings.m */; };
+		042EADE121EBD5BB00AE9A52 /* ButtonRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042EADE021EBD5BB00AE9A52 /* ButtonRowView.m */; };
 		045E1C2F21E9FA6800774D9B /* ColorRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E1C2E21E9FA6800774D9B /* ColorRowView.m */; };
 		045E1C3321E9FABD00774D9B /* ColorCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E1C3221E9FABD00774D9B /* ColorCircleView.m */; };
 		0467B05821D69584004BBBBB /* NSColor+XGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467B05721D69584004BBBBB /* NSColor+XGrid.m */; };
@@ -39,6 +41,10 @@
 		0409224721D29CAB00F97DC9 /* NSView+XGrid.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSView+XGrid.m"; sourceTree = "<group>"; };
 		042EADD621EB209400AE9A52 /* ColorCircleItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorCircleItem.h; sourceTree = "<group>"; };
 		042EADD721EB209400AE9A52 /* ColorCircleItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorCircleItem.m; sourceTree = "<group>"; };
+		042EADDB21EB8BF300AE9A52 /* LinesSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinesSettings.h; sourceTree = "<group>"; };
+		042EADDC21EB8BF300AE9A52 /* LinesSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinesSettings.m; sourceTree = "<group>"; };
+		042EADDF21EBD5BB00AE9A52 /* ButtonRowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonRowView.h; sourceTree = "<group>"; };
+		042EADE021EBD5BB00AE9A52 /* ButtonRowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonRowView.m; sourceTree = "<group>"; };
 		045E1C2D21E9FA6800774D9B /* ColorRowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorRowView.h; sourceTree = "<group>"; };
 		045E1C2E21E9FA6800774D9B /* ColorRowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorRowView.m; sourceTree = "<group>"; };
 		045E1C3121E9FABD00774D9B /* ColorCircleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorCircleView.h; sourceTree = "<group>"; };
@@ -143,8 +149,36 @@
 			children = (
 				042EADD621EB209400AE9A52 /* ColorCircleItem.h */,
 				042EADD721EB209400AE9A52 /* ColorCircleItem.m */,
+				045E1C3021E9FAA400774D9B /* ColorCircleView */,
 			);
 			path = ColorCircleItem;
+			sourceTree = "<group>";
+		};
+		042EADD921EB8BDB00AE9A52 /* PersistantStorage */ = {
+			isa = PBXGroup;
+			children = (
+				04F2052921E1F11300717E3A /* PersistantStorage.h */,
+				04F2052A21E1F11300717E3A /* PersistantStorage.m */,
+			);
+			path = PersistantStorage;
+			sourceTree = "<group>";
+		};
+		042EADDA21EB8BE100AE9A52 /* LinesSettings */ = {
+			isa = PBXGroup;
+			children = (
+				042EADDB21EB8BF300AE9A52 /* LinesSettings.h */,
+				042EADDC21EB8BF300AE9A52 /* LinesSettings.m */,
+			);
+			path = LinesSettings;
+			sourceTree = "<group>";
+		};
+		042EADDE21EBD57700AE9A52 /* ButtonRowView */ = {
+			isa = PBXGroup;
+			children = (
+				042EADDF21EBD5BB00AE9A52 /* ButtonRowView.h */,
+				042EADE021EBD5BB00AE9A52 /* ButtonRowView.m */,
+			);
+			path = ButtonRowView;
 			sourceTree = "<group>";
 		};
 		045E1C2C21E9FA4D00774D9B /* ColorRowView */ = {
@@ -153,7 +187,6 @@
 				045E1C2D21E9FA6800774D9B /* ColorRowView.h */,
 				045E1C2E21E9FA6800774D9B /* ColorRowView.m */,
 				042EADD521EB206F00AE9A52 /* ColorCircleItem */,
-				045E1C3021E9FAA400774D9B /* ColorCircleView */,
 			);
 			path = ColorRowView;
 			sourceTree = "<group>";
@@ -273,8 +306,9 @@
 		04F2051D21DFC89D00717E3A /* Row views */ = {
 			isa = PBXGroup;
 			children = (
-				045E1C2C21E9FA4D00774D9B /* ColorRowView */,
 				04F2052721E0EE2A00717E3A /* SliderRowView */,
+				045E1C2C21E9FA4D00774D9B /* ColorRowView */,
+				042EADDE21EBD57700AE9A52 /* ButtonRowView */,
 			);
 			path = "Row views";
 			sourceTree = "<group>";
@@ -291,8 +325,8 @@
 		04F2052821E1F0F600717E3A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				04F2052921E1F11300717E3A /* PersistantStorage.h */,
-				04F2052A21E1F11300717E3A /* PersistantStorage.m */,
+				042EADDA21EB8BE100AE9A52 /* LinesSettings */,
+				042EADD921EB8BDB00AE9A52 /* PersistantStorage */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -365,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042EADDD21EB8BF300AE9A52 /* LinesSettings.m in Sources */,
 				0409223E21D2998600F97DC9 /* main.m in Sources */,
 				04BB603121DF417C00C667B3 /* GridLinesPreferencesViewController.m in Sources */,
 				0467B06921D7BE35004BBBBB /* GridToolbar.m in Sources */,
@@ -380,6 +415,7 @@
 				04BB602C21DF3F5A00C667B3 /* GridLinesPreferences.m in Sources */,
 				0490E34221D64E7200254EC2 /* MainViewController.m in Sources */,
 				0409224821D29CAB00F97DC9 /* NSView+XGrid.m in Sources */,
+				042EADE121EBD5BB00AE9A52 /* ButtonRowView.m in Sources */,
 				0467B06421D7B23C004BBBBB /* LinesItem.m in Sources */,
 				04F2052621E0EE2600717E3A /* SliderRowView.m in Sources */,
 			);
