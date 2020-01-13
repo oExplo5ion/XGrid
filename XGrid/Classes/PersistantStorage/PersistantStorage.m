@@ -10,6 +10,18 @@
 
 @implementation PersistantStorage
 
+#pragma public
++(void)setSettings:(LinesSettings *)settings {
+    [PersistantStorage prepeare];
+    NSString* json = [settings toJSON];
+    NSLog(@"%@", json);
+}
+
++(LinesSettings *)getSettings {
+    return [LinesSettings new];
+}
+
+#pragma private
 +(NSURL* _Nullable)directory {
     NSError *error;
     
@@ -23,14 +35,6 @@
     // create app's file
     NSString *bundle = [[NSBundle mainBundle] bundleIdentifier];
     return [support URLByAppendingPathComponent:bundle];
-}
-
-+(void)setSettings:(LinesSettings *)settings {
-    [PersistantStorage prepeare];
-}
-
-+(LinesSettings *)getSettings {
-    return [LinesSettings new];
 }
 
 +(void)prepeare {

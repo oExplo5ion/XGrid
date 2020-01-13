@@ -14,17 +14,25 @@
 {
     self = [super init];
     if (self) {
-        _width = 3;
-        _color = NSColor.cyanColor;
+        self.width = 3;
+        self.color = NSColor.cyanColor;
     }
     return self;
 }
 
--(NSDictionary*)toDictionary {
-    NSMutableDictionary *mutDict = [[NSMutableDictionary alloc] init];
-    [mutDict setValue:self.color forKey:@"color"];
-    [mutDict setValue:[NSNumber numberWithInt:self.width] forKey:@"width"];
-    return [[NSDictionary alloc] initWithDictionary:mutDict];
+-(NSString* _Nullable)toJSON {
+    return nil;
+//    NSMutableDictionary *mutDict = [[NSMutableDictionary alloc] init];
+//    [mutDict setValue:self.color forKey:@"color"];
+//    [mutDict setValue:[NSNumber numberWithInt:self.width] forKey:@"width"];
+//
+//    NSArray *dataArr = [NSArray arrayWithObject:mutDict];
+//    NSError *error = nil;
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dataArr options:NSJSONWritingPrettyPrinted error:nil];
+//
+//    if (error != nil) { return nil; }
+//
+//    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
 @end

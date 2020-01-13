@@ -77,14 +77,13 @@
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    __block LinesSettings *settings = _linesSettings;
     __block GridLinesPreferencesViewController *this = self;
     // 0 - slider (size of grid lines)
     if (row == 0) {
         SliderRowView *row = [[SliderRowView alloc] init];
         row.onSliderChange = ^(int value) {
-            if (settings != nil) {
-                settings.width = value;
+            if (self.linesSettings != nil) {
+                self.linesSettings.width = value;
             }
             if (self.onSliderChange != nil) {
                 self.onSliderChange(value);
@@ -96,8 +95,8 @@
     if (row == 1) {
         ColorRowView *row = [[ColorRowView alloc] init];
         row.onColorSelected = ^(NSColor *color) {
-            if (settings != nil) {
-                settings.color = color;
+            if (self.linesSettings != nil) {
+                self.linesSettings.color = color;
             }
             if (self.onColorSelected != nil) {
                 self.onColorSelected(color);
@@ -113,7 +112,7 @@
             if (this.saveClicked == nil) { return; }
             if (self.linesSettings == nil) { return; }
             [PersistantStorage setSettings:self.linesSettings];
-            this.saveClicked(settings);
+            this.saveClicked(self.linesSettings);
         };
         return row;
     }

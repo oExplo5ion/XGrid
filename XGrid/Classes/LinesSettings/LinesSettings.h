@@ -12,8 +12,8 @@
 @interface LinesSettings : NSObject
 
 @property (nonatomic, assign) uint8 width;
-@property (nonatomic, assign) NSColor *color;
+@property (nonatomic, assign) NSColor* _Nonnull color;
 
--(NSDictionary*)toDictionary;
+-(NSString* _Nullable)toJSON;
 
 @end
