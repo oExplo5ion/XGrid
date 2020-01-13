@@ -13,12 +13,21 @@
 
 @implementation GridLinesPreferencesViewController
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         reuseColumn = @"reuseColumn";
         [self setup];
+    }
+    return self;
+}
+
+- (instancetype)initWith:(LinesSettings*)settings {
+    self = [super init];
+    if (self) {
+        reuseColumn = @"reuseColumn";
+        [self setup];
+        [self setLinesSettings:settings];
     }
     return self;
 }
@@ -103,7 +112,7 @@
         [row setButtonTitle:@"SAVE"];
         row.onButtonClick = ^{
             if (this.saveClicked == nil) { return; }
-            if (settings == nil) { return; }
+            if (self.linesSettings == nil) { return; }
             this.saveClicked(settings);
         };
         return row;

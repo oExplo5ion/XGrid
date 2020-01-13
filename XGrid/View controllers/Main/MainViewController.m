@@ -24,7 +24,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        linesWidth = 3;
+        linesWidth = 1;
         gridLines = [[NSMutableSet alloc] init];
         linesSettings = [[LinesSettings alloc] init];
         [self drawLineMenus];
@@ -186,7 +186,7 @@
     [self.view addSubview:gridLine];
     [gridLines addObject:gridLine];
     
-    [gridLine drawLine:direction];
+    [gridLine drawLine:direction color:linesSettings.color];
 }
 
 -(void)removeGridLines {
@@ -205,10 +205,9 @@
     prefs.onColorSelected = ^(NSColor *color) {
         [self changeLinesColor:color];
     };
-    __block LinesSettings *s = linesSettings;
     __block MainViewController *this = self;
     prefs.willClose = ^(LinesSettings *settings) {
-        s = settings;
+        [self->linesSettings setColor:settings.color];
         [this updateLines];
     };
     [prefs showWindow:self];

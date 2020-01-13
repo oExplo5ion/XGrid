@@ -8,9 +8,9 @@
 /**
  * Draw line vivisble to user
  */
--(void)drawLine:(LinesViewDirection)direction;
+-(void)drawLine:(LinesViewDirection)direction color:(NSColor*_Nonnull)color;
 
--(void)setLineColor:(NSColor*)color;
+-(void)setLineColor:(NSColor*_Nonnull)color;
 
 /**
  * User has dragged view

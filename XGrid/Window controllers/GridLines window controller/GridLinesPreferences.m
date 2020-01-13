@@ -25,12 +25,14 @@
 #pragma mark Window delegates
 -(void)windowWillClose:(NSNotification *)notification {
     if (self.willClose == nil)  { return; }
-    if (_linesSettings == nil)   { return; }
-    self.willClose(_linesSettings);
+    if (self.linesSettings == nil)   { return; }
+    self.willClose(self.linesSettings);
 }
 
 #pragma mark UI
 -(void)setup {
+    self.linesSettings = [[LinesSettings alloc] init];
+    
     rWindow = [[NSWindow alloc] initWithContentRect:NSScreen.mainScreen.frame
                                            styleMask:NSWindowStyleMaskClosable | NSWindowStyleMaskTitled | NSWindowStyleMaskFullSizeContentView
                                              backing:NSBackingStoreBuffered
@@ -44,7 +46,7 @@
     [[rWindow standardWindowButton:NSWindowMiniaturizeButton] setHidden:true];
     rWindow.delegate = self;
     
-    GridLinesPreferencesViewController *vc =  [[GridLinesPreferencesViewController alloc] init];
+    GridLinesPreferencesViewController *vc =  [[GridLinesPreferencesViewController alloc] initWith:self.linesSettings];
     vc.onSliderChange = ^(uint8 value) {
         if (self.onSliderChange == nil) { return; }
         self.onSliderChange(value);
@@ -53,13 +55,11 @@
         if (self.onColorSelected == nil) { return; }
         self.onColorSelected(color);
     };
-    __block LinesSettings *settings = _linesSettings;
-    __block NSWindow *rwin = rWindow;
     vc.saveClicked = ^(LinesSettings *newSettings) {
-        settings = newSettings;
-        [rwin close];
+        [self.linesSettings setColor:newSettings.color];
+        [self.linesSettings setWidth:newSettings.width];
+        [self->rWindow close];
     };
-    vc.linesSettings = _linesSettings;
     rWindow.contentViewController = vc;
     
     [self setWindow:rWindow];

@@ -93,7 +93,7 @@
 }
 
 #pragma mark UI
--(void)drawLine:(LinesViewDirection)direction {
+-(void)drawLine:(LinesViewDirection)direction color:(NSColor*_Nonnull)color {
     _scrollDirection = direction;
     
     [line removeFromSuperview];
@@ -102,7 +102,7 @@
     line = [[NSView alloc] init];
     [self addSubview:line];
     line.translatesAutoresizingMaskIntoConstraints = false;
-    [line setBackGroundColor:NSColor.cyanColor];
+    [line setBackGroundColor:color];
     
     uint8 multiplier = 2;
     if (direction == VERTICAL) {

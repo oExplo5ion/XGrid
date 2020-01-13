@@ -3,7 +3,7 @@
 
 @interface GridLinesPreferences : NSWindowController
 
-@property (weak, nonatomic) LinesSettings *linesSettings;
+@property (nonatomic) LinesSettings *linesSettings;
 
 @property (nonatomic, copy) void (^onSliderChange)(uint8);
 @property (nonatomic, copy) void (^onColorSelected)(NSColor*);
