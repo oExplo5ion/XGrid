@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LinesSettings.h"
 
 @interface PersistantStorage : NSObject
 
-/**
- * Size of lines on Main vc
- */
-@property (class, nonatomic, assign) uint8 lineSize;
++(void) setSettings:(LinesSettings*)settings;
++(LinesSettings*) getSettings;
 
 @end

@@ -90,7 +90,6 @@
                 self.onSliderChange(value);
             }
         };
-        [row setSliderValue: PersistantStorage.lineSize];
         return row;
     }
     // 1 - lines color
@@ -113,6 +112,7 @@
         row.onButtonClick = ^{
             if (this.saveClicked == nil) { return; }
             if (self.linesSettings == nil) { return; }
+            [PersistantStorage setSettings:self.linesSettings];
             this.saveClicked(settings);
         };
         return row;

@@ -14,4 +14,6 @@
 @property (nonatomic, assign) uint8 width;
 @property (nonatomic, assign) NSColor *color;
 
+-(NSDictionary*)toDictionary;
+
 @end

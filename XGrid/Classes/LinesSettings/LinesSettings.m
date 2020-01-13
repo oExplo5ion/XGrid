@@ -20,4 +20,11 @@
     return self;
 }
 
+-(NSDictionary*)toDictionary {
+    NSMutableDictionary *mutDict = [[NSMutableDictionary alloc] init];
+    [mutDict setValue:self.color forKey:@"color"];
+    [mutDict setValue:[NSNumber numberWithInt:self.width] forKey:@"width"];
+    return [[NSDictionary alloc] initWithDictionary:mutDict];
+}
+
 @end
