@@ -12,7 +12,7 @@
 #import "ColorCircleItem.h"
 
 @interface ColorRowView () <NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout> {
-    uint8 size;
+    CGFloat size;
     NSScrollView *scrollView;
     NSCollectionView *collectionView;
     NSString *reuseColorItem;

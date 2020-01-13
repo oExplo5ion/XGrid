@@ -7,6 +7,7 @@
 //
 
 #import "LinesSettings.h"
+#import "NSColor+XGrid.h"
 
 @implementation LinesSettings
 
@@ -21,18 +22,19 @@
 }
 
 -(NSString* _Nullable)toJSON {
-    return nil;
-//    NSMutableDictionary *mutDict = [[NSMutableDictionary alloc] init];
-//    [mutDict setValue:self.color forKey:@"color"];
-//    [mutDict setValue:[NSNumber numberWithInt:self.width] forKey:@"width"];
-//
-//    NSArray *dataArr = [NSArray arrayWithObject:mutDict];
-//    NSError *error = nil;
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dataArr options:NSJSONWritingPrettyPrinted error:nil];
-//
-//    if (error != nil) { return nil; }
-//
-//    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSDictionary *dict =
+    @{
+        @"color"    : [self.color rgbValue],
+        @"width"    : [NSNumber numberWithFloat:self.width]
+    };
+    
+    NSArray *dataArr = [NSArray arrayWithObject:dict];
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dataArr options:NSJSONWritingPrettyPrinted error:nil];
+
+    if (error != nil) { return nil; }
+
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
 @end

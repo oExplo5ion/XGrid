@@ -12,6 +12,6 @@
 
 @property (nonatomic, copy) void (^onSliderChange)(int);
 
--(void)setSliderValue:(uint8)value;
+-(void)setSliderValue:(CGFloat)value;
 
 @end

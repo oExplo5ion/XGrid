@@ -47,7 +47,7 @@
     rWindow.delegate = self;
     
     GridLinesPreferencesViewController *vc =  [[GridLinesPreferencesViewController alloc] initWith:self.linesSettings];
-    vc.onSliderChange = ^(uint8 value) {
+    vc.onSliderChange = ^(CGFloat value) {
         if (self.onSliderChange == nil) { return; }
         self.onSliderChange(value);
     };

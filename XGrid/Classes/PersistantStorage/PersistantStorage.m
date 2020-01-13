@@ -13,8 +13,17 @@
 #pragma public
 +(void)setSettings:(LinesSettings *)settings {
     [PersistantStorage prepeare];
+    
     NSString* json = [settings toJSON];
-    NSLog(@"%@", json);
+    if (json == nil) { return; }
+    
+    NSURL *directory = [[PersistantStorage directory] URLByAppendingPathComponent:@"settings.json"];
+    if (directory == nil) { return; }
+    
+    BOOL setFile = [[NSFileManager defaultManager] createFileAtPath:directory.path contents:nil attributes:nil];
+    if (!setFile) { return; }
+
+    [json writeToFile:directory.path atomically:TRUE encoding:NSUTF16StringEncoding error:nil];
 }
 
 +(LinesSettings *)getSettings {

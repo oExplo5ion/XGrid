@@ -38,7 +38,7 @@
     }
 }
 
--(void)setSliderValue:(uint8)value {
+-(void)setSliderValue:(CGFloat)value {
     slider.integerValue = value;
 }
 

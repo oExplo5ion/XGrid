@@ -12,7 +12,7 @@
     NSView *templateView;
     CGSize voidSize;
     NSMutableSet *gridLines;
-    uint8 linesWidth;
+    CGFloat linesWidth;
 }
 @property GridToolbar *gridToolBar;
 @property LinesView *topLinesView;
@@ -123,7 +123,7 @@
     [self removeTemplate];
     
     CGRect rect;
-    uint8 width = 1;
+    CGFloat width = 1;
     if (direction == VERTICAL) {
         rect = CGRectMake(voidSize.width,
                           point.y + 20,
@@ -199,7 +199,7 @@
 -(void)showGridLinesPreferences {
     GridLinesPreferences *prefs = [[GridLinesPreferences alloc] init];
     prefs.linesSettings = linesSettings;
-    prefs.onSliderChange = ^(uint8 value) {
+    prefs.onSliderChange = ^(CGFloat value) {
         [self changeLinesWidth:value];
     };
     prefs.onColorSelected = ^(NSColor *color) {
@@ -218,7 +218,7 @@
     [self changeLinesColor:linesSettings.color];
 }
 
--(void)changeLinesWidth:(uint8)width {
+-(void)changeLinesWidth:(CGFloat)width {
     linesWidth = width;
     for (GridLine *g in gridLines) {
         if (g.scrollDirection == HORIZONTAL) {
