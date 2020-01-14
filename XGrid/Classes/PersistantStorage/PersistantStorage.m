@@ -11,23 +11,32 @@
 @implementation PersistantStorage
 
 #pragma public
-+(void)setSettings:(LinesSettings *)settings {
++(void)setSettings:(LinesSettings*)settings {
     [PersistantStorage prepeare];
     
     NSString* json = [settings toJSON];
     if (json == nil) { return; }
     
-    NSURL *directory = [[PersistantStorage directory] URLByAppendingPathComponent:@"settings.json"];
-    if (directory == nil) { return; }
+    NSURL *file = [[PersistantStorage directory] URLByAppendingPathComponent:@"settings.json"];
+    if (file == nil) { return; }
     
-    BOOL setFile = [[NSFileManager defaultManager] createFileAtPath:directory.path contents:nil attributes:nil];
+    BOOL setFile = [[NSFileManager defaultManager] createFileAtPath:file.path contents:nil attributes:nil];
     if (!setFile) { return; }
 
-    [json writeToFile:directory.path atomically:TRUE encoding:NSUTF16StringEncoding error:nil];
+    [json writeToFile:file.path atomically:TRUE encoding:NSUTF16StringEncoding error:nil];
 }
 
-+(LinesSettings *)getSettings {
-    return [LinesSettings new];
++(LinesSettings* _Nullable)getSettings {
+    NSURL *file = [[PersistantStorage directory] URLByAppendingPathComponent:@"settings.json"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:file.path]) { return nil; }
+    NSData *data = [NSData dataWithContentsOfFile:file.path];
+    NSError *error = nil;
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    if (error != nil) {
+        NSLog(@"%@", error);
+        return nil;
+    }
+    return [LinesSettings fromJSON:json];
 }
 
 #pragma private

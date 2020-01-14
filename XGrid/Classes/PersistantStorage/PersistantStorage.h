@@ -12,6 +12,6 @@
 @interface PersistantStorage : NSObject
 
 +(void) setSettings:(LinesSettings*)settings;
-+(LinesSettings*) getSettings;
++(LinesSettings* _Nullable) getSettings;
 
 @end

@@ -37,4 +37,20 @@
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
++(LinesSettings*_Nullable)fromJSON:(NSArray*_Nonnull)json {
+    NSDictionary *dict = json[0];
+    if (dict == nil) { return nil; }
+    NSArray *color = [dict objectForKey:@"color"];
+    int r = [color[0] intValue];
+    int g = [color[1] intValue];
+    int b = [color[2] intValue];
+    NSColor *sColor = [NSColor colorWithRed:r/255 green:g/255 blue:b/255 alpha:1];
+    CGFloat sWidth = [[dict objectForKey:@"width"] floatValue];
+    
+    LinesSettings *settings = [[LinesSettings alloc] init];
+    [settings setColor:sColor];
+    [settings setWidth:sWidth];
+    return settings;
+}
+
 @end

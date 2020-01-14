@@ -15,5 +15,6 @@
 @property (nonatomic, assign) NSColor* _Nonnull color;
 
 -(NSString* _Nullable)toJSON;
++(LinesSettings*_Nullable)fromJSON:(NSArray*_Nonnull)json;
 
 @end

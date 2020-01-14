@@ -6,6 +6,7 @@
 #import "GridLine.h"
 #import "GridLinesPreferences.h"
 #import "LinesSettings.h"
+#import "PersistantStorage.h"
 
 @interface MainViewController () {
     LinesSettings *linesSettings;
@@ -27,6 +28,13 @@
         linesWidth = 1;
         gridLines = [[NSMutableSet alloc] init];
         linesSettings = [[LinesSettings alloc] init];
+        
+        LinesSettings* savedSettings = [PersistantStorage getSettings];
+        if (savedSettings != nil) {
+            [linesSettings setColor:savedSettings.color];
+            [linesSettings setWidth:savedSettings.width];
+        }
+        
         [self drawLineMenus];
         [self setupMenu];
     }
