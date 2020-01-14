@@ -89,7 +89,7 @@
 }
 
 -(void)menuDidClose:(NSMenu *)menu {
-    [line setBackGroundColor:NSColor.cyanColor];
+    
 }
 
 #pragma mark UI
