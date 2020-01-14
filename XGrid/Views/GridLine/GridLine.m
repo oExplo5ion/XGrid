@@ -1,10 +1,11 @@
 #import "GridLine.h"
 #import "NSView+XGrid.h"
+#import "NSColor+XGrid.h"
 
 @interface GridLine () <NSMenuDelegate> {
     NSView *line;
+    NSColor *lineColor;
 }
-
 @end
 
 @implementation GridLine
@@ -21,9 +22,7 @@
 - (instancetype)init
 {
     self = [super init];
-    if (self) {
-        
-    }
+    if (self) {}
     return self;
 }
 
@@ -85,15 +84,21 @@
 #pragma mark Menu degelate
 -(void)menuWillOpen:(NSMenu *)menu {
     if (line == nil) { return; }
-    [line setBackGroundColor:NSColor.redColor];
+    NSArray *rgb = [lineColor rgbValue];
+    int r = [rgb[0] intValue];
+    int g = [rgb[1] intValue];
+    int b = [rgb[2] intValue];
+    NSColor *highlightColor = [NSColor colorWithRed:1. -r green: 2. -g blue:3. -b alpha:1];
+    [line setBackGroundColor:highlightColor];
 }
 
 -(void)menuDidClose:(NSMenu *)menu {
-    
+    [line setBackGroundColor:lineColor];
 }
 
 #pragma mark UI
 -(void)drawLine:(LinesViewDirection)direction color:(NSColor*_Nonnull)color {
+    lineColor = color;
     _scrollDirection = direction;
     
     [line removeFromSuperview];
@@ -121,6 +126,7 @@
 }
 
 -(void)setLineColor:(NSColor *)color {
+    lineColor = color;
     [line setBackGroundColor:color];
 }
 
