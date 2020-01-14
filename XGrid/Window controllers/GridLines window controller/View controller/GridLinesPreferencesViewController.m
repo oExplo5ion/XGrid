@@ -1,6 +1,5 @@
 #import "GridLinesPreferencesViewController.h"
 #import "NSView+XGrid.h"
-#import "SliderRowView.h"
 #import "PersistantStorage.h"
 #import "ColorRowView.h"
 #import "ButtonRowView.h"
@@ -57,20 +56,16 @@
 
 #pragma mark Table view
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return 3;
+    return 2;
 }
 
 -(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
-    // 0 - slider (size of grid lines)
+    // 1 - lines color
     if (row == 0) {
         return 60.0f;
     }
-    // 1 - lines color
-    if (row == 1) {
-        return 60.0f;
-    }
     // 2 - buuton (save)
-    if (row == 2) {
+    if (row == 1) {
         return 60.0f;
     }
     return 0.0001f;
@@ -78,21 +73,8 @@
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     __block GridLinesPreferencesViewController *this = self;
-    // 0 - slider (size of grid lines)
-    if (row == 0) {
-        SliderRowView *row = [[SliderRowView alloc] init];
-        row.onSliderChange = ^(int value) {
-            if (self.linesSettings != nil) {
-                self.linesSettings.width = value;
-            }
-            if (self.onSliderChange != nil) {
-                self.onSliderChange(value);
-            }
-        };
-        return row;
-    }
     // 1 - lines color
-    if (row == 1) {
+    if (row == 0) {
         ColorRowView *row = [[ColorRowView alloc] init];
         row.onColorSelected = ^(NSColor *color) {
             if (self.linesSettings != nil) {
@@ -105,7 +87,7 @@
         return row;
     }
     // 2 - buuton (save)
-    if (row == 2) {
+    if (row == 1) {
         ButtonRowView *row = [[ButtonRowView alloc] init];
         [row setButtonTitle:@"SAVE"];
         row.onButtonClick = ^{

@@ -47,10 +47,6 @@
     rWindow.delegate = self;
     
     GridLinesPreferencesViewController *vc =  [[GridLinesPreferencesViewController alloc] initWith:self.linesSettings];
-    vc.onSliderChange = ^(CGFloat value) {
-        if (self.onSliderChange == nil) { return; }
-        self.onSliderChange(value);
-    };
     vc.onColorSelected = ^(NSColor *color) {
         if (self.onColorSelected == nil) { return; }
         self.onColorSelected(color);

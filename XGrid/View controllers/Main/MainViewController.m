@@ -207,9 +207,6 @@
 -(void)showGridLinesPreferences {
     GridLinesPreferences *prefs = [[GridLinesPreferences alloc] init];
     prefs.linesSettings = linesSettings;
-    prefs.onSliderChange = ^(CGFloat value) {
-        [self changeLinesWidth:value];
-    };
     prefs.onColorSelected = ^(NSColor *color) {
         [self changeLinesColor:color];
     };
@@ -222,26 +219,7 @@
 }
 
 -(void)updateLines {
-    [self changeLinesWidth:linesSettings.width];
     [self changeLinesColor:linesSettings.color];
-}
-
--(void)changeLinesWidth:(CGFloat)width {
-    linesWidth = width;
-    for (GridLine *g in gridLines) {
-        if (g.scrollDirection == HORIZONTAL) {
-            g.frame = CGRectMake(g.frame.origin.x,
-                                 g.frame.origin.y,
-                                 width,
-                                 g.frame.size.height);
-        }
-        if (g.scrollDirection == VERTICAL) {
-            g.frame = CGRectMake(g.frame.origin.x,
-                                 g.frame.origin.y,
-                                 g.frame.size.width,
-                                 width);
-        }
-    }
 }
 
 -(void)changeLinesColor:(NSColor*)color {
